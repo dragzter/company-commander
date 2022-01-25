@@ -1,0 +1,27 @@
+{
+  "name": "company-commander",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@types/node": "^17.0.11",
+    "moment": "^2.29.1",
+    "vue": "^3.2.25",
+    "vue-dndrop": "^1.2.0",
+    "vue-router": "^4.0.12",
+    "vuex": "^4.0.2"
+  },
+  "devDependencies": {
+    "@types/uuid": "^8.3.4",
+    "@vitejs/plugin-vue": "^2.0.0",
+    "@vue/cli-plugin-router": "~4.5.0",
+    "sass": "^1.49.0",
+    "typescript": "^4.4.4",
+    "uuid": "^8.3.2",
+    "vite": "^2.7.2",
+    "vue-tsc": "^0.29.8"
+  }
+}
