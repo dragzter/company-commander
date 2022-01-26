@@ -1,27 +1,70 @@
 <template>
-  <router-view></router-view>
+  <Nav :navigationList="navItems" />
+  <div class="container">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
-import ControlPanel from "./components/ControlPanel.vue";
+import { defineComponent, ref } from "vue";
+import Nav from "./components/gui/Nav.vue";
 
 export default defineComponent({
   components: {
-    ControlPanel,
+    Nav,
   },
   setup() {
-    return {};
+    const navItems = ref<object>([
+      {
+        url: "Home",
+        text: "Home",
+        css_id: "home-link",
+      },
+      {
+        url: "GameSettings",
+        text: "Game Setup",
+        css_id: "game-setup-link",
+      },
+      {
+        url: "Roster",
+        text: "Roster",
+        css_id: "roster-link",
+      },
+      {
+        url: "Missions",
+        text: "Missions",
+        css_id: "missions-link",
+      },
+      {
+        url: "Provisions",
+        text: "Provisions",
+        css_id: "provisions-link",
+      },
+      {
+        url: "Recruitment",
+        text: "Recruitment",
+        css_id: "recruitment-link",
+      },
+    ]);
+
+    return {
+      navItems,
+    };
   },
 });
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  margin-top: 60px;
+@import "./assets/scss/colors.scss";
+@import "./assets/scss/style.scss";
+
+.nav-wrapper {
+  width: 100%;
+  background-color: $light-grey;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: center;
+  padding: 15px;
 }
 </style>

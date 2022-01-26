@@ -1,17 +1,41 @@
 import { createRouter, createWebHistory } from "vue-router";
 import GameSettings from "./components/pages/GameSettings.vue";
-import RosterSetup from "./components/pages/RosterSetup.vue";
+import CompanyRoster from "./components/pages/CompanyRoster.vue";
+import Home from "./components/pages/Home.vue";
+import Missions from "./components/pages/Missions.vue";
+import Provisions from "./components/pages/Provisions.vue";
+import Recruitment from "./components/pages/RecruitmentForum.vue";
 
 const routes = [
   {
     path: "/",
-    name: "GameSettings",
-    component: GameSettings,
+    name: "Home",
+    component: Home,
   },
   {
     path: "/roster",
     name: "Roster",
-    component: RosterSetup,
+    component: CompanyRoster,
+  },
+  {
+    path: "/game-settings",
+    name: "GameSettings",
+    component: GameSettings,
+  },
+  {
+    path: "/missions",
+    name: "Missions",
+    component: Missions,
+  },
+  {
+    path: "/recruitment",
+    name: "Recruitment",
+    component: Recruitment,
+  },
+  {
+    path: "/provisions",
+    name: "Provisions",
+    component: Provisions,
   },
 ];
 const router = createRouter({

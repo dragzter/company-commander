@@ -1,6 +1,6 @@
 <template>
   <div class="settings">
-    <h1>Game Starting Settings</h1>
+    <h1>Game Settings</h1>
     <h5 @click="displayInfo">
       Game Info <span class="ui-pointer green-text">(click to show)</span>
     </h5>
@@ -132,7 +132,7 @@ export default defineComponent({
 }
 
 .input-wrapper {
-  margin-bottom: 10px;
+  margin-bottom: 20px;
   width: 250px;
   label,
   input {
@@ -146,10 +146,6 @@ export default defineComponent({
     margin-bottom: 2px;
     color: $ui-text;
   }
-}
-
-button {
-  margin-right: 15px;
 }
 
 .bold {
