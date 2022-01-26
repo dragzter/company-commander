@@ -7,192 +7,192 @@ import {
   SoldierGeneratorConfig as SldrCnfg,
   SupportTeamGeneratorConfig as SprtTeamCnfg,
 } from "../types/unit-types";
-import { getRandomValueFromRange as r } from "./random-ranges";
+import { getRandomValueFromRange as r } from "./get-random-value";
 
 export const SOLDIER_CONFIGS = {
   [Job.RIFLEMAN as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(2, 5),
+      getCombatPower: (max: number) => r(2, 5, max),
       getRank: () => Ranks.PRIVATE,
-      getLeadership: () => r(1, 3),
-      getMorale: () => r(3, 5),
-      getHitChance: () => r(55, 70),
+      getLeadership: (max: number) => r(1, 3, max),
+      getMorale: (max: number) => r(3, 5, max),
+      getHitChance: (max: number) => r(55, 70, max),
       getJob: () => Job.RIFLEMAN,
       wounds: 1,
     };
   },
   [Job.RECON_RIFLEMAN as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(3, 6),
+      getCombatPower: (max: number) => r(3, 6, max),
       getRank: () => Ranks.PRIVATE,
-      getLeadership: () => r(2, 4),
-      getMorale: () => r(3, 6),
-      getHitChance: () => r(60, 70),
+      getLeadership: (max: number) => r(2, 4, max),
+      getMorale: (max: number) => r(3, 6, max),
+      getHitChance: (max: number) => r(60, 70, max),
       getJob: () => Job.RECON_RIFLEMAN,
       wounds: 1,
     };
   },
   [Job.MG_CREWMAN as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(1, 4),
+      getCombatPower: (max: number) => r(1, 4, max),
       getRank: () => Ranks.PRIVATE,
-      getLeadership: () => r(1, 3),
-      getMorale: () => r(3, 4),
-      getHitChance: () => r(55, 65),
+      getLeadership: (max: number) => r(1, 3, max),
+      getMorale: (max: number) => r(3, 4, max),
+      getHitChance: (max: number) => r(55, 65, max),
       getJob: () => Job.MG_CREWMAN,
       wounds: 1,
     };
   },
   [Job.MG_CREW_LOADER as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(1, 4),
+      getCombatPower: (max: number) => r(1, 4, max),
       getRank: () => Ranks.PRIVATE,
-      getLeadership: () => r(1, 3),
-      getMorale: () => r(3, 4),
-      getHitChance: () => r(50, 60),
+      getLeadership: (max: number) => r(1, 3, max),
+      getMorale: (max: number) => r(3, 4, max),
+      getHitChance: (max: number) => r(50, 60, max),
       getJob: () => Job.MG_CREW_LOADER,
       wounds: 1,
     };
   },
   [Job.MG_CREW_GUNNER as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(2, 4),
+      getCombatPower: (max: number) => r(2, 4, max),
       getRank: () => Ranks.PRIVATE,
-      getLeadership: () => r(2, 4),
-      getMorale: () => r(3, 5),
-      getHitChance: () => r(55, 70),
+      getLeadership: (max: number) => r(2, 4, max),
+      getMorale: (max: number) => r(3, 5, max),
+      getHitChance: (max: number) => r(55, 70, max),
       getJob: () => Job.MG_CREW_GUNNER,
       wounds: 1,
     };
   },
   [Job.MORTAR_TEAM_LEADER as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(1, 4),
+      getCombatPower: (max: number) => r(1, 4, max),
       getRank: () => Ranks.PRIVATE,
-      getLeadership: () => r(1, 3),
-      getMorale: () => r(3, 4),
-      getHitChance: () => r(55, 60),
+      getLeadership: (max: number) => r(1, 3, max),
+      getMorale: (max: number) => r(3, 4, max),
+      getHitChance: (max: number) => r(55, 60, max),
       getJob: () => Job.MORTAR_TEAM_LEADER,
       wounds: 1,
     };
   },
   [Job.MORTAR_CREWMAN as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(1, 4),
+      getCombatPower: (max: number) => r(1, 4, max),
       getRank: () => Ranks.PRIVATE,
-      getLeadership: () => r(1, 3),
-      getMorale: () => r(3, 4),
-      getHitChance: () => r(55, 60),
+      getLeadership: (max: number) => r(1, 3, max),
+      getMorale: (max: number) => r(3, 4, max),
+      getHitChance: (max: number) => r(55, 60, max),
       getJob: () => Job.MORTAR_CREWMAN,
       wounds: 1,
     };
   },
   [Job.SQUAD_LEADER as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(3, 6),
+      getCombatPower: (max: number) => r(3, 6, max),
       getRank: () => Ranks.CORPORAL,
-      getLeadership: () => r(3, 5),
-      getMorale: () => r(3, 6),
-      getHitChance: () => r(60, 70),
+      getLeadership: (max: number) => r(3, 5, max),
+      getMorale: (max: number) => r(3, 6, max),
+      getHitChance: (max: number) => r(60, 70, max),
       getJob: () => Job.SQUAD_LEADER,
       wounds: 1,
     };
   },
   [Job.SQUAD_GUNNER as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(2, 5),
+      getCombatPower: (max: number) => r(2, 5, max),
       getRank: () => Ranks.PRIVATE,
-      getLeadership: () => r(1, 3),
-      getMorale: () => r(3, 5),
-      getHitChance: () => r(55, 70),
+      getLeadership: (max: number) => r(1, 3, max),
+      getMorale: (max: number) => r(3, 5, max),
+      getHitChance: (max: number) => r(55, 70, max),
       getJob: () => Job.SQUAD_GUNNER,
       wounds: 1,
     };
   },
   [Job.SNIPER as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(4, 6),
+      getCombatPower: (max: number) => r(4, 6, max),
       getRank: () => Ranks.LIUETENANT,
-      getLeadership: () => r(2, 5),
-      getMorale: () => r(4, 6),
-      getHitChance: () => r(75, 80),
+      getLeadership: (max: number) => r(2, 5, max),
+      getMorale: (max: number) => r(4, 6, max),
+      getHitChance: (max: number) => r(75, 80, max),
       getJob: () => Job.SNIPER,
       wounds: 2,
     };
   },
   [Job.MEDIC as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(1, 3),
+      getCombatPower: (max: number) => r(1, 3, max),
       getRank: () => Ranks.PRIVATE,
-      getLeadership: () => r(1, 3),
-      getMorale: () => r(4, 6),
-      getHitChance: () => r(45, 55),
+      getLeadership: (max: number) => r(1, 3, max),
+      getMorale: (max: number) => r(4, 6, max),
+      getHitChance: (max: number) => r(45, 55, max),
       getJob: () => Job.MEDIC,
       wounds: 2,
     };
   },
   [Job.SURGEON as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(1, 3),
+      getCombatPower: (max: number) => r(1, 3, max),
       getRank: () => Ranks.CAPTAIN,
-      getLeadership: () => r(3, 5),
-      getMorale: () => r(4, 6),
-      getHitChance: () => r(45, 55),
+      getLeadership: (max: number) => r(3, 5, max),
+      getMorale: (max: number) => r(4, 6, max),
+      getHitChance: (max: number) => r(45, 55, max),
       getJob: () => Job.SURGEON,
       wounds: 2,
     };
   },
-  [Job.OFFICER as string]: (): SldrCnfg => {
+  [Job.PLATOON_COMMANDER as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(2, 4),
+      getCombatPower: (max: number) => r(2, 4, max),
       getRank: () => Ranks.WARRANT_OFFICER,
-      getLeadership: () => r(4, 6),
-      getMorale: () => r(7, 8),
-      getHitChance: () => r(60, 70),
-      getJob: () => Job.OFFICER,
+      getLeadership: (max: number) => r(4, 6, max),
+      getMorale: (max: number) => r(7, 8, max),
+      getHitChance: (max: number) => r(60, 70, max),
+      getJob: () => Job.PLATOON_COMMANDER,
       wounds: 2,
     };
   },
-  [Job.SENIOR_OFFICER as string]: (): SldrCnfg => {
+  [Job.COMPANY_COMMANDER as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(2, 4),
+      getCombatPower: (max: number) => r(2, 4, max),
       getRank: () => Ranks.MAJOR,
-      getLeadership: () => r(5, 8),
-      getMorale: () => r(7, 8),
-      getHitChance: () => r(60, 70),
-      getJob: () => Job.SENIOR_OFFICER,
+      getLeadership: (max: number) => r(5, 8, max),
+      getMorale: (max: number) => r(7, 8, max),
+      getHitChance: (max: number) => r(60, 70, max),
+      getJob: () => Job.COMPANY_COMMANDER,
       wounds: 2,
     };
   },
   [Job.FIRE_TEAM_GUNNER as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(3, 6),
+      getCombatPower: (max: number) => r(3, 6, max),
       getRank: () => Ranks.PRIVATE,
-      getLeadership: () => r(1, 4),
-      getMorale: () => r(3, 6),
-      getHitChance: () => r(60, 70),
+      getLeadership: (max: number) => r(1, 4, max),
+      getMorale: (max: number) => r(3, 6, max),
+      getHitChance: (max: number) => r(60, 70, max),
       getJob: () => Job.FIRE_TEAM_GUNNER,
       wounds: 1,
     };
   },
   [Job.FIRE_TEAM_RIFLEMAN as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(3, 6),
+      getCombatPower: (max: number) => r(3, 6, max),
       getRank: () => Ranks.PRIVATE,
-      getLeadership: () => r(1, 4),
-      getMorale: () => r(3, 6),
-      getHitChance: () => r(60, 70),
+      getLeadership: (max: number) => r(1, 4, max),
+      getMorale: (max: number) => r(3, 6, max),
+      getHitChance: (max: number) => r(60, 70, max),
       getJob: () => Job.FIRE_TEAM_RIFLEMAN,
       wounds: 1,
     };
   },
   [Job.FIRE_TEAM_LEADER as string]: (): SldrCnfg => {
     return {
-      getCombatPower: () => r(3, 6),
+      getCombatPower: (max: number) => r(3, 6, max),
       getRank: () => Ranks.SERGEANT,
-      getLeadership: () => r(2, 5),
-      getMorale: () => r(4, 6),
-      getHitChance: () => r(60, 75),
+      getLeadership: (max: number) => r(2, 5, max),
+      getMorale: (max: number) => r(4, 6, max),
+      getHitChance: (max: number) => r(60, 75, max),
       getJob: () => Job.FIRE_TEAM_LEADER,
       wounds: 2,
     };
@@ -249,6 +249,18 @@ export const SUPPORT_TEAM_CONFIGS = {
         member1: Job.FIRE_TEAM_RIFLEMAN,
         member2: Job.FIRE_TEAM_RIFLEMAN,
         member3: Job.FIRE_TEAM_RIFLEMAN,
+      },
+    };
+  },
+  [Support.COMMAND_TEAM]: (): SprtTeamCnfg => {
+    return {
+      leader: Job.COMPANY_COMMANDER,
+      assistant: Job.PLATOON_COMMANDER,
+      crew: {
+        member1: Job.PLATOON_COMMANDER,
+        member2: Job.FIRE_TEAM_GUNNER,
+        member3: Job.FIRE_TEAM_RIFLEMAN,
+        member4: Job.FIRE_TEAM_RIFLEMAN,
       },
     };
   },

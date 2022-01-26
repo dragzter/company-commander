@@ -84,33 +84,10 @@ export interface Soldier {
   leadership: number; // Max 10
   experience: number; // No max
   job: SoldierJobs;
-  numberOfBattleFought?: number; // No max
+  numberOfBattlesFought?: number; // No max
   special?: object | string;
   battleLog?: BattleLogEntry[];
 }
-
-// Sample soldier structure
-const sold: Soldier = {
-  name: "Name", // Some string
-  id: "jkhglkc908dne", // This will be a UUID
-  hitChance: 90,
-  experience: 10,
-  numberOfBattleFought: 0,
-  wounds: 1,
-  job: SoldierJobs.RIFLEMAN,
-  veterancy: 1,
-  level: 1,
-  evasion: 5,
-  rank: {
-    value: Ranks.CAPTAIN,
-  },
-  morale: 4,
-  combatPower: 19,
-  leadership: 2,
-};
-
-console.log(sold);
-
 export interface SupportTeam {
   leader?: Soldier;
   assistant?: Soldier;
@@ -129,13 +106,14 @@ export interface SupportTeam {
 export interface Company {
   infantry: Soldier[];
   companyName: string;
-  officers?: Soldier[];
-  commander?: Soldier;
+  dateOfCreation: string;
+  commandTeam?: SupportTeam;
   mgCrew?: SupportTeam;
   mortarCrew?: SupportTeam;
   reconCrew?: SupportTeam;
   medCrew?: SupportTeam;
   sniper?: Soldier;
+  headCount?: number;
 }
 
 /**

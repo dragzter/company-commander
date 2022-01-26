@@ -8,22 +8,20 @@
 <script lang="ts">
 import { defineComponent, onMounted, ref } from "vue";
 import Unit from "../units/Unit.vue";
-import { Soldier, Company, SupportTeam } from "../types/unit-types";
+import { Company } from "../types/unit-types";
 import { generateSupportTeam } from "../helpers/generate-support-team";
 import { SupportTeamList } from "../types/enums";
+import { createCompany } from "../helpers/create-company";
+
 export default defineComponent({
   components: {
     Unit,
   },
   setup() {
-    const company = ref<Company[]>([]);
-
-    const assembleCompany = () => {};
-
-    const generateSoldierName = () => {};
+    const company = ref<Company>();
 
     onMounted(() => {
-      console.log(generateSupportTeam(SupportTeamList.MED_TEAM));
+      console.log(createCompany("The solid snakes"));
     });
 
     return {
