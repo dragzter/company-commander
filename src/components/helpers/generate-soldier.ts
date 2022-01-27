@@ -14,9 +14,12 @@ const ATTRIBUTE_LIMITS = {
 };
 
 /**
- * A Soldier is the base template for any type of unit in the game
+ * A Soldier is the base template for
+ * any type of unit in the game
+ *
  * A Soldier can have any Job
- * @param config Defines what type of soldier we are creating
+ * @param config Defines what
+ * type of soldier we are creating
  * @returns Soldier
  */
 export const generateSoldier = (config: SoldierGeneratorConfig): Soldier => {
@@ -24,7 +27,7 @@ export const generateSoldier = (config: SoldierGeneratorConfig): Soldier => {
     name: getRandomSoldierName(),
     id: uuidv4(),
     level: 1,
-    veterancy: 0,
+    veterancy: 0, // Soldiers start at 0
     experience: 0,
     numberOfBattlesFought: 0,
     evasion: getRandVal(1, 5, ATTRIBUTE_LIMITS.evasion),

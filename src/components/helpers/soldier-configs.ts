@@ -264,4 +264,21 @@ export const SUPPORT_TEAM_CONFIGS = {
       },
     };
   },
+  [Support.ASSAULT_SQUAD]: (): SprtTeamCnfg => {
+    return {
+      leader: Job.SQUAD_LEADER,
+      assistant: Job.RECON_RIFLEMAN,
+      crew: {
+        member1: Job.FIRE_TEAM_GUNNER,
+        member2: Job.FIRE_TEAM_GUNNER,
+        member3: Job.FIRE_TEAM_GUNNER,
+        member4: Job.FIRE_TEAM_RIFLEMAN,
+        member5: Job.FIRE_TEAM_RIFLEMAN,
+        member6: Job.FIRE_TEAM_RIFLEMAN,
+        member7: Job.FIRE_TEAM_RIFLEMAN,
+        member8: Job.RECON_RIFLEMAN,
+        member9: Job.RECON_RIFLEMAN,
+      },
+    };
+  },
 };

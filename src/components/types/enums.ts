@@ -31,6 +31,8 @@ export enum SoldierJobs {
   COMPANY_COMMANDER = "COMPANY_COMMANDER",
 }
 
+// Special Forces?
+
 export enum SupportTeamList {
   MG_TEAM = "MG_TEAM",
   MORTAR_TEAM = "MORTAR_TEAM",
@@ -38,4 +40,5 @@ export enum SupportTeamList {
   MED_TEAM = "MED_TEAM",
   FIRE_TEAM = "FIRE_TEAM",
   COMMAND_TEAM = "COMMAND_TEAM",
+  ASSAULT_SQUAD = "ASSAULT_SQUAD",
 }
