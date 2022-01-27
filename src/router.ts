@@ -5,6 +5,7 @@ import Home from "./components/pages/Home.vue";
 import Missions from "./components/pages/Missions.vue";
 import Provisions from "./components/pages/Provisions.vue";
 import Recruitment from "./components/pages/RecruitmentForum.vue";
+import GameMenu from "./components/pages/GameMenu.vue";
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: "/provisions",
     name: "Provisions",
     component: Provisions,
+  },
+  {
+    path: "/game-menu",
+    name: "GameMenu",
+    component: GameMenu,
   },
 ];
 const router = createRouter({

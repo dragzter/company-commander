@@ -45,11 +45,20 @@ a {
   display: inline-block;
 }
 
+.nav-wrapper {
+  width: 100%;
+  background-color: $light-grey;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  align-items: center;
+  padding: 15px;
+}
+
 a {
   text-decoration: none;
   padding: 5px 12px;
-  border: 1px dashed #000;
-  background: #fff;
+
   color: #000;
   &:hover {
     background: darken(#fff, 4%);
@@ -65,6 +74,11 @@ input {
   max-width: 1400px;
   margin: 30px auto;
   padding: 0 15px;
+
+  a {
+    border: 1px dashed #000;
+    background: #fff;
+  }
 }
 
 h1,
@@ -75,4 +89,53 @@ h5,
 h6 {
   padding: 0;
   margin-bottom: 15px;
+}
+
+.input-wrapper {
+  margin-bottom: 20px;
+  width: 250px;
+  label,
+  input {
+    display: block;
+    width: 100%;
+  }
+  select {
+    width: 100%;
+  }
+  label {
+    margin-bottom: 2px;
+    color: $ui-text;
+  }
+}
+
+.accent {
+  border: 1px dashed black;
+  padding: 0 12px;
+  text-transform: capitalize;
+  display: inline-block;
+  background: #eee;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.bg-light {
+  background-color: $light-grey;
+}
+
+.game-info {
+  display: none;
+}
+
+.ui-pointer {
+  cursor: pointer;
+}
+
+.is-shown {
+  display: block !important;
+}
+
+.green-text {
+  color: $green;
 }

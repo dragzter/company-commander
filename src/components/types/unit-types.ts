@@ -11,13 +11,23 @@ import { Ranks, SoldierJobs } from "./enums";
  *
  * What the various attributes mean
  * --------------------------------
- * Morale: likelyness to break when under heavy attack
+ * Morale: likelyness to break when under
+ * heavy attack
+ *
  * Leadership: likelyness to be promoted
- * Combat Rating: Increases offensive and defensive capability (hit, crit, evade)
- * Veterancy: Blanket increase to all stats (3 levels)
- * Experience: Increased with every engagement, also by performing hits on enemies
- * Rank: Ability to be promoted to leadership positions within the company
- * Evasion: The ability to evade attacks (max of 10%)
+ *
+ * Combat Rating: Increases offensive and
+ * defensive capability (hit, crit, evade)
+ * Veterancy: Blanket increase to all stats
+ * (3 levels)
+ *
+ * Experience: Increased with every engagement,
+ * also by performing hits on enemies
+ * Rank: Ability to be promoted to leadership
+ * positions within the company
+ *
+ * Evasion: The ability to evade attacks
+ * (max of 10%)
  */
 
 export interface SoldierRank {
@@ -41,7 +51,8 @@ export interface BattleLogEntry {
 }
 
 /**
- * When a unit is killed we track some basic info
+ * When a unit is killed we track
+ * some basic info
  */
 export interface KiaUnit {
   name: string;
@@ -52,8 +63,9 @@ export interface KiaUnit {
 }
 
 /**
- * Battles or engagements are called BattleEvents
- * We record some history after every event.
+ * Battles or engagements are called
+ * BattleEvents We record some history
+ * after every event.
  */
 export interface BattleEvent {
   name: string;
@@ -68,7 +80,8 @@ export interface BattleEvent {
 
 /**
  * All Units are Soldiers
- * This is the base template from which to create any unit
+ * This is the base template
+ * from which to create any unit
  */
 export interface Soldier {
   name: string;
@@ -98,7 +111,8 @@ export interface SupportTeam {
 
 /**
  * Companies have optional support units
- * At minimum, a Company needs to have Soldiers and a name
+ * At minimum, a Company needs to have
+ * Soldiers and a name
  *
  * A starting company has 80 Soldiers
  * A Company can have as many as 200

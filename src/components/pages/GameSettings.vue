@@ -30,28 +30,20 @@
       />
     </div>
     <div class="input-wrapper">
-      <label class="bold" for="company-type"
-        >Company Type <em>(This is purely for flavor and naming)</em></label
-      >
-      <select v-model="companyType" name="companytype" id="company-type">
-        <option disabled value="">Please select one</option>
-        <option value="paramilitary">Paramilitary</option>
-        <option value="mercenary">Mercenary</option>
-        <option value="androids">Androids</option>
-        <option value="stormtrooper">Stormtrooper</option>
-      </select>
+      <Select
+        :options="companyTypeOptions"
+        default="mercenaries"
+        cssId="company-type"
+        label="Company Type"
+      />
     </div>
     <div class="input-wrapper">
-      <label class="bold" for="game-difficulty">Game Difficulty</label>
-      <select
-        v-model="gameDifficulty"
-        name="game-difficulty"
-        id="game-difficulty"
-      >
-        <option value="easy">Easy</option>
-        <option value="medium">Medium</option>
-        <option value="hard">Hard</option>
-      </select>
+      <Select
+        :options="gameDifficultyOptions"
+        cssId="game-difficulty"
+        label="Game Difficulty"
+        default="medium"
+      />
     </div>
     <div class="input-wrapper">
       <button @click="handleSave">Save</button>
@@ -66,7 +58,12 @@
 import { defineComponent, ref, watch } from "vue";
 import { useStore } from "vuex";
 import { Mutations } from "../../store/mutations";
+import Select from "../gui/Select.vue";
+
 export default defineComponent({
+  components: {
+    Select,
+  },
   setup() {
     const companyName = ref<string>("Wardogs");
     const companyType = ref<string>("mercenary");
@@ -74,6 +71,36 @@ export default defineComponent({
     const isSaved = ref<boolean>(false);
     const store = useStore();
     const showInfo = ref<boolean>(false);
+
+    const gameDifficultyOptions = ref<object[]>([
+      {
+        value: "easy",
+        label: "Easy",
+      },
+      {
+        value: "medium",
+        label: "Medium",
+      },
+      {
+        value: "hard",
+        label: "Hard",
+      },
+    ]);
+
+    const companyTypeOptions = ref<object[]>([
+      {
+        value: "Paramilitary",
+        label: "paramilitary",
+      },
+      {
+        value: "mercenaries",
+        label: "Mercenaries",
+      },
+      {
+        value: "Stormtrooper",
+        label: "stormtrooper",
+      },
+    ]);
 
     const setCompanyInfo = () => {
       store.commit(Mutations.SET_COMPANY_INFO, {
@@ -108,6 +135,8 @@ export default defineComponent({
       companyType,
       gameDifficulty,
       isSaved,
+      gameDifficultyOptions,
+      companyTypeOptions,
       showInfo,
       handleSave,
       displayInfo,
@@ -116,7 +145,7 @@ export default defineComponent({
 });
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 @import "../../assets/scss/colors.scss";
 
 .body-copy {
@@ -129,46 +158,5 @@ export default defineComponent({
   padding: 15px;
   border: 2px dashed $ui-text;
   border-radius: 5px;
-}
-
-.input-wrapper {
-  margin-bottom: 20px;
-  width: 250px;
-  label,
-  input {
-    display: block;
-    width: 100%;
-  }
-  select {
-    width: 100%;
-  }
-  label {
-    margin-bottom: 2px;
-    color: $ui-text;
-  }
-}
-
-.bold {
-  font-weight: bold;
-}
-
-.bg-light {
-  background-color: $light-grey;
-}
-
-.game-info {
-  display: none;
-}
-
-.ui-pointer {
-  cursor: pointer;
-}
-
-.is-shown {
-  display: block !important;
-}
-
-.green-text {
-  color: $green;
 }
 </style>

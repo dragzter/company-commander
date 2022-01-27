@@ -57,14 +57,4 @@ export default defineComponent({
 <style lang="scss">
 @import "./assets/scss/colors.scss";
 @import "./assets/scss/style.scss";
-
-.nav-wrapper {
-  width: 100%;
-  background-color: $light-grey;
-  display: flex;
-  justify-content: space-between;
-  box-sizing: border-box;
-  align-items: center;
-  padding: 15px;
-}
 </style>

@@ -5,6 +5,12 @@
       <template v-for="item in navigationList" :key="item.text">
         <nav-item :destination="item" />
       </template>
+      <router-link
+        class="game-settings"
+        title="Game Settings"
+        :to="{ name: 'GameMenu' }"
+        >&#9881;</router-link
+      >
     </div>
   </div>
 </template>
@@ -28,5 +34,11 @@ export default defineComponent({
 <style lang="scss">
 h4 {
   margin: 0 !important;
+}
+.game-settings {
+  font-size: 26px;
+  border: 1px solid #000;
+  border-radius: 30px;
+  padding: 0 5px;
 }
 </style>
