@@ -20,35 +20,37 @@
         veterancy (automatic).
       </p>
     </div>
-    <div class="input-wrapper">
-      <label class="bold" for="company-name">Comany Name</label>
-      <input
-        v-model="companyName"
-        type="text"
-        id="company-name"
-        placeholder="Wardogs..."
-      />
+    <div v-if="!isSaved">
+      <div class="input-wrapper">
+        <label class="bold" for="company-name">Comany Name</label>
+        <input
+          v-model="companyName"
+          type="text"
+          id="company-name"
+          placeholder="Wardogs..."
+        />
+      </div>
+      <div class="input-wrapper">
+        <Select
+          :options="companyTypeOptions"
+          default="mercenaries"
+          cssId="company-type"
+          label="Company Type"
+        />
+      </div>
+      <div class="input-wrapper">
+        <Select
+          :options="gameDifficultyOptions"
+          cssId="game-difficulty"
+          label="Game Difficulty"
+          default="medium"
+        />
+      </div>
     </div>
     <div class="input-wrapper">
-      <Select
-        :options="companyTypeOptions"
-        default="mercenaries"
-        cssId="company-type"
-        label="Company Type"
-      />
-    </div>
-    <div class="input-wrapper">
-      <Select
-        :options="gameDifficultyOptions"
-        cssId="game-difficulty"
-        label="Game Difficulty"
-        default="medium"
-      />
-    </div>
-    <div class="input-wrapper">
-      <button @click="handleSave">Save</button>
+      <button @click="handleSave" v-if="!isSaved">Save</button>
       <router-link :to="{ name: 'Roster' }" v-if="isSaved"
-        >Assemble Company</router-link
+        >Manage Company</router-link
       >
     </div>
   </div>
@@ -58,7 +60,9 @@
 import { defineComponent, ref, watch } from "vue";
 import { useStore } from "vuex";
 import { Mutations } from "../../store/mutations";
+import { createCompany } from "../helpers/create-company";
 import Select from "../gui/Select.vue";
+import { Company } from "../types/unit-types";
 
 export default defineComponent({
   components: {
@@ -71,7 +75,11 @@ export default defineComponent({
     const isSaved = ref<boolean>(false);
     const store = useStore();
     const showInfo = ref<boolean>(false);
+    const company = ref<Company>();
 
+    /**
+     * Prop Configs
+     */
     const gameDifficultyOptions = ref<object[]>([
       {
         value: "easy",
@@ -102,6 +110,21 @@ export default defineComponent({
       },
     ]);
 
+    const displayInfo = () => {
+      showInfo.value = !showInfo.value;
+    };
+
+    const handleSave = () => {
+      isSaved.value = true;
+      company.value = createCompany("The solid snakes");
+      setCompanyInfo();
+      setGameDifficulty();
+      setCompany();
+    };
+
+    /**
+     * State Management
+     */
     const setCompanyInfo = () => {
       store.commit(Mutations.SET_COMPANY_INFO, {
         name: companyName.value,
@@ -113,16 +136,13 @@ export default defineComponent({
       store.commit(Mutations.SET_GAME_DIFFICULTY, gameDifficulty.value);
     };
 
-    const displayInfo = () => {
-      showInfo.value = !showInfo.value;
+    const setCompany = () => {
+      store.dispatch("setCompany", company.value);
     };
 
-    const handleSave = () => {
-      isSaved.value = true;
-      setCompanyInfo();
-      setGameDifficulty();
-    };
-
+    /**
+     * Lifecycle Hooks
+     */
     watch(
       () => companyType.value,
       (newVal) => {

@@ -1,5 +1,7 @@
+import { Company } from "../components/types/unit-types";
+
 export const actions = {
-  // saveCompanyInfo: (context: any) => {
-  //   context.commit("increment");
-  // },
+  setCompany: (context: any, payload: Company) => {
+    context.commit("SET_COMPANY", payload);
+  },
 };

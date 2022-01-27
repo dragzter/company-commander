@@ -2,6 +2,7 @@ import { createStore } from "vuex";
 import { actions } from "./actions";
 import { mutations } from "./mutations";
 import { getters } from "./getters";
+import { Company } from "../components/types/unit-types";
 
 export interface GameState {
   companyInfo: {
@@ -9,7 +10,7 @@ export interface GameState {
     type: string;
   };
   gameDifficulty: string;
-  roster: any[];
+  company: Company;
 }
 
 const store = createStore({
@@ -19,7 +20,11 @@ const store = createStore({
       type: "unknown",
     },
     gameDifficulty: "easy",
-    roster: [],
+    company: {
+      infantry: [],
+      companyName: "",
+      dateOfCreation: "",
+    },
   },
   actions: { ...actions },
   getters: { ...getters },
