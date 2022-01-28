@@ -2,7 +2,7 @@
   <div class="nav-wrapper">
     <div><h4>COMPANY COMMANDER</h4></div>
     <div>
-      <template v-for="item in navigationList" :key="item.text">
+      <template v-for="item in navItemList" :key="item.text">
         <nav-item :destination="item" />
       </template>
       <router-link
@@ -15,20 +15,25 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
 import NavItem from "./NavItem.vue";
+import { useStore } from "vuex";
 
 export default defineComponent({
   components: {
     NavItem,
   },
-  props: {
-    navigationList: {
-      type: Object,
-      required: true,
-    },
+  props: {},
+  setup() {
+    const store = useStore();
+    const navItemList = computed(() => {
+      return store.getters["getNavItems"];
+    });
+
+    return {
+      navItemList,
+    };
   },
-  setup() {},
 });
 </script>
 <style lang="scss">

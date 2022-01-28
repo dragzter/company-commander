@@ -1,5 +1,5 @@
 <template>
-  <Nav :navigationList="navItems" />
+  <Nav />
   <div class="container">
     <router-view></router-view>
   </div>
@@ -8,48 +8,15 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import Nav from "./components/gui/Nav.vue";
+import { NavMenuItem } from "./components/types/unit-types";
+import { homeNav, gameSettingsNav } from "./components/helpers/nav-items";
 
 export default defineComponent({
   components: {
     Nav,
   },
   setup() {
-    const navItems = ref<object>([
-      {
-        url: "Home",
-        text: "Home",
-        css_id: "home-link",
-      },
-      {
-        url: "GameSettings",
-        text: "Game Setup",
-        css_id: "game-setup-link",
-      },
-      {
-        url: "Roster",
-        text: "Roster",
-        css_id: "roster-link",
-      },
-      {
-        url: "Missions",
-        text: "Missions",
-        css_id: "missions-link",
-      },
-      {
-        url: "Provisions",
-        text: "Provisions",
-        css_id: "provisions-link",
-      },
-      {
-        url: "Recruitment",
-        text: "Recruitment",
-        css_id: "recruitment-link",
-      },
-    ]);
-
-    return {
-      navItems,
-    };
+    return {};
   },
 });
 </script>

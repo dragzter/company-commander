@@ -8,6 +8,7 @@ export const createCompany = (companyName: string): Company => {
     infantry: generateSoldierGroup(Job.RIFLEMAN, 74),
     dateOfCreation: new Date().toLocaleDateString(),
     commandTeam: generateSupportTeam(SupportTeamList.COMMAND_TEAM),
+    mgCrew: generateSupportTeam(SupportTeamList.MG_TEAM),
     companyName,
   };
 };

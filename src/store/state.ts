@@ -2,23 +2,20 @@ import { createStore } from "vuex";
 import { actions } from "./actions";
 import { mutations } from "./mutations";
 import { getters } from "./getters";
-import { Company } from "../components/types/unit-types";
+import { Company, NavMenuItem } from "../components/types/unit-types";
+import { homeNav, gameSettingsNav } from "../components/helpers/nav-items";
 
 export interface GameState {
-  companyInfo: {
-    name: string;
-    type: string;
-  };
+  navItems: NavMenuItem[];
   gameDifficulty: string;
+  playerCredits: number;
   company: Company;
 }
 
 const store = createStore({
   state: {
-    companyInfo: {
-      name: "unknown",
-      type: "unknown",
-    },
+    navItems: [homeNav, gameSettingsNav],
+    playerCredits: 500,
     gameDifficulty: "easy",
     company: {
       infantry: [],

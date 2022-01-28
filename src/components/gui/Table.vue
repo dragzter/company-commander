@@ -1,48 +1,32 @@
 <template>
   <div class="table-wrapper">
-    <table>
+    <table v-if="tableData">
       <thead>
         <tr>
-          <th>Name</th>
-          <th>ID</th>
-          <th>Level</th>
-          <th>Battles Fought</th>
-          <th>Hit Chance</th>
-          <th>Veterancy</th>
-          <th>Rank</th>
-          <th>Morale</th>
-          <th>Combat Power</th>
-          <th>Leadership</th>
-          <th>Job</th>
+          <template
+            v-for="(headerItem, i) in tableData.tableHeaders"
+            :key="`${headerItem}-${i}`"
+          >
+            <th>{{ headerItem }}</th>
+          </template>
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Steve Markaski</td>
-          <td>420934238497</td>
-          <td>2 / 25</td>
-          <td>3</td>
-          <td>68% / 95%</td>
-          <td>1 / 3</td>
-          <td>PRIVATE</td>
-          <td>5 / 10</td>
-          <td>4 / 25</td>
-          <td>2 / 10</td>
-          <td>RIFLEMAN</td>
-        </tr>
-        <tr>
-          <td>Bob Drakk</td>
-          <td>354870869863</td>
-          <td>2 / 25</td>
-          <td>2</td>
-          <td>58% / 95%</td>
-          <td>1 / 3</td>
-          <td>PRIVATE</td>
-          <td>5 / 10</td>
-          <td>3 / 25</td>
-          <td>2 / 10</td>
-          <td>RIFLEMAN</td>
-        </tr>
+        <template v-for="row in tableData.rowData" :key="row.id">
+          <tr>
+            <td>{{ row.name }}</td>
+            <td>{{ row.rank }}</td>
+            <td>{{ row.job }}</td>
+            <td>{{ row.level }}</td>
+            <td>{{ row.veterancy }}</td>
+            <td>{{ row.morale }}</td>
+            <td>{{ row.combatPower }}</td>
+            <td>{{ row.leadership }}</td>
+            <td>{{ row.evasion }}%</td>
+            <td>{{ row.hitChance }}%</td>
+            <td>{{ row.experience }}</td>
+          </tr>
+        </template>
       </tbody>
     </table>
   </div>

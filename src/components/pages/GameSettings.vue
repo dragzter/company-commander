@@ -20,7 +20,7 @@
         veterancy (automatic).
       </p>
     </div>
-    <div v-if="!isSaved">
+    <div>
       <div class="input-wrapper">
         <label class="bold" for="company-name">Comany Name</label>
         <input
@@ -48,21 +48,20 @@
       </div>
     </div>
     <div class="input-wrapper">
-      <button @click="handleSave" v-if="!isSaved">Save</button>
-      <router-link :to="{ name: 'Roster' }" v-if="isSaved"
-        >Manage Company</router-link
-      >
+      <button @click="handleSave">Save</button>
     </div>
   </div>
 </template>
 <script lang="ts">
 // Main Settings page - Step 1
-import { defineComponent, ref, watch } from "vue";
+import { defineComponent, onMounted, ref, watch } from "vue";
 import { useStore } from "vuex";
 import { Mutations } from "../../store/mutations";
 import { createCompany } from "../helpers/create-company";
 import Select from "../gui/Select.vue";
 import { Company } from "../types/unit-types";
+import router from "../../router";
+import { gameSettingsNav, homeNav, rosterNav } from "../helpers/nav-items";
 
 export default defineComponent({
   components: {
@@ -116,8 +115,7 @@ export default defineComponent({
 
     const handleSave = () => {
       isSaved.value = true;
-      company.value = createCompany("The solid snakes");
-      setCompanyInfo();
+      company.value = createCompany(companyName.value);
       setGameDifficulty();
       setCompany();
     };
@@ -125,13 +123,6 @@ export default defineComponent({
     /**
      * State Management
      */
-    const setCompanyInfo = () => {
-      store.commit(Mutations.SET_COMPANY_INFO, {
-        name: companyName.value,
-        type: companyType.value,
-      });
-    };
-
     const setGameDifficulty = () => {
       store.commit(Mutations.SET_GAME_DIFFICULTY, gameDifficulty.value);
     };
@@ -140,13 +131,24 @@ export default defineComponent({
       store.dispatch("setCompany", company.value);
     };
 
+    const updateNavItems = () => {
+      store.dispatch("setNavItems", [rosterNav]);
+    };
+
     /**
      * Lifecycle Hooks
      */
+    onMounted(() => {
+      store.dispatch("setNavItems", [gameSettingsNav, rosterNav]);
+    });
+
     watch(
-      () => companyType.value,
+      () => company.value,
       (newVal) => {
-        console.log(newVal);
+        if (newVal) {
+          updateNavItems();
+          router.push({ name: "Roster" });
+        }
       }
     );
 

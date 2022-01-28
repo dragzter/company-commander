@@ -11,17 +11,15 @@
     >
     <p style="text-align: center">v0.3.0</p>
   </div>
+  <div style="text-align: center; margin-top: 25px">
+    <router-link :to="{ name: 'GameSettings' }">Launch Campaign</router-link>
+  </div>
 </template>
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  setup() {
-    const gameTitle = ref<string>();
-    onMounted(() => {
-      gameTitle.value = "";
-    });
-  },
+  setup() {},
 });
 </script>
 <style lang="scss">

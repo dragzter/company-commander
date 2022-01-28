@@ -154,3 +154,28 @@ export interface SupportTeamGeneratorConfig {
   assistant: string;
   crew: { [key: string]: string };
 }
+
+export interface NavMenuItem {
+  url: string;
+  text: string;
+  css_id: string;
+}
+
+export interface TableData {
+  tableHeaders: string[];
+  rowData: SoldierDataCells[];
+}
+
+export interface SoldierDataCells {
+  name: string;
+  rank: string;
+  job: string;
+  level: number;
+  veterancy: number;
+  morale: number;
+  combatPower: number;
+  leadership: number;
+  evasion: number;
+  hitChance: number;
+  experience: number;
+}
