@@ -1,7 +1,13 @@
 <template>
-  <h1>Company Roster</h1>
+  <div class="row flex align-center justify-between">
+    <div class="col flex"><h1>Company Roster</h1></div>
+    <div class="col flex justify-end">
+      <button class="btn-green">Start</button>
+      <button class="m0">Edit Company</button>
+    </div>
+  </div>
+
   <Table :tableData="companyTableData" />
-  <router-link :to="{ name: 'GameSettings' }">Back</router-link>
 </template>
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref, watch } from "vue";
@@ -15,6 +21,7 @@ import {
 } from "../types/unit-types";
 import { generateSupportTeam } from "../helpers/generate-support-team";
 import { SupportTeamList } from "../types/enums";
+import { tableHeaders } from "../helpers/constants";
 import Table from "../gui/Table.vue";
 
 export default defineComponent({
@@ -25,55 +32,41 @@ export default defineComponent({
     const store = useStore();
     const companyTableData = ref<TableData>();
     const companyRoster = ref<Company>();
+    const allSoldiers = ref<Soldier[]>([]);
 
     const getCompanyRoster = (): Company => {
       return store.getters["getCompanyRoster"];
     };
 
-    /**
-     * Compile Table Data
-     */
-    const createTableData = (companyData: any) => {
+    const consolidateSoldiers = (companyData: any): Soldier[] => {
+      const consolidatedSoldierArray = [];
       const companyProps = Object.keys(companyData);
-      let allSoldiers: Soldier[] = [];
-      const potentialTeams = [
-        "commandTeam",
-        "mgCrew",
-        "mortarCrew",
-        "reconCrew",
-        "medCrew",
-        "sniper",
-      ];
 
-      potentialTeams
+      ["commandTeam", "mgCrew", "mortarCrew", "reconCrew", "medCrew", "sniper"]
         .filter((team: string) => {
           return companyProps.includes(team);
         })
         .forEach((team: string) => {
-          allSoldiers.push(
+          consolidatedSoldierArray.push(
             companyData[team].assistant,
             companyData[team].leader,
             ...companyData[team].crew
           );
         });
 
-      allSoldiers.push(...companyData.infantry);
+      consolidatedSoldierArray.push(...companyData.infantry);
+      return consolidatedSoldierArray;
+    };
+
+    /**
+     * Compile Table Data
+     */
+    const createTableData = (companyData: Company) => {
+      allSoldiers.value = consolidateSoldiers(companyData);
 
       companyTableData.value = {
-        tableHeaders: [
-          "Name",
-          "Rank",
-          "Job",
-          "Level",
-          "Veterancy",
-          "Morale",
-          "Combat Power",
-          "Leadership",
-          "Evasion",
-          "Hit Chance",
-          "Experience",
-        ],
-        rowData: allSoldiers.map((soldier: Soldier): SoldierDataCells => {
+        tableHeaders,
+        rowData: allSoldiers.value.map((soldier: Soldier): SoldierDataCells => {
           return {
             name: soldier.name,
             rank: soldier.rank.value,

@@ -8,7 +8,9 @@
       class="popup-copy game-info bg-light"
       :class="{ 'is-shown': showInfo }"
     >
-      <p>A company is formed with 80 units but can grow to up to 200 units.</p>
+      <p>
+        A company is formed with 85 Soldiers but can grow to up to 200 Soldiers.
+      </p>
       <p>
         As units are lost in combat, the company commander (you) may replenish
         his company by visiting the recruitment forum. A Company Commander may
@@ -61,7 +63,7 @@ import { createCompany } from "../helpers/create-company";
 import Select from "../gui/Select.vue";
 import { Company } from "../types/unit-types";
 import router from "../../router";
-import { gameSettingsNav, homeNav, rosterNav } from "../helpers/nav-items";
+import { gameSettingsNav, homeNav, rosterNav } from "../helpers/constants";
 
 export default defineComponent({
   components: {

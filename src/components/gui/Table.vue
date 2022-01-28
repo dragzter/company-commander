@@ -56,7 +56,7 @@ table {
   th {
     border: 1px solid #c0c0c0;
     text-align: left;
-    padding: 8px;
+    padding: 3px 6px;
   }
 }
 

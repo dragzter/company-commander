@@ -8,6 +8,42 @@ body {
   }
 }
 
+.m0 {
+  margin: 0 !important;
+}
+
+.p0 {
+  padding: 0 !important;
+}
+
+.mauto {
+  margin: auto !important;
+}
+
+.flex {
+  display: flex;
+}
+
+.col {
+  width: 100%;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.row {
+  width: 100%;
+}
+
 .nav-wrapper {
   .router-link-active {
     outline: 1px dashed #000;
@@ -28,6 +64,7 @@ body {
 button {
   padding: 5px 12px;
   border-radius: 0;
+  border-radius: 2px;
   background: #eee;
   border: 1px solid #ccc;
   cursor: pointer;
@@ -35,6 +72,46 @@ button {
 
   &:hover {
     background: darken(#ccc, 2%);
+  }
+
+  &.btn-main {
+    background: #508dec;
+    color: #fff;
+    border-color: #9fbdec;
+
+    &:hover {
+      background: darken(#508dec, 2%);
+    }
+  }
+
+  &.btn-green {
+    background: #15a06b;
+    color: #fff;
+    border-color: #4cd8a2;
+
+    &:hover {
+      background: darken(#15a06b, 2%);
+    }
+  }
+
+  &.btn-alt {
+    background: #313131;
+    color: #fff;
+    border-color: #636363;
+
+    &:hover {
+      background: darken(#313131, 2%);
+    }
+  }
+
+  &.btn-red {
+    background: #cc180b;
+    color: #fff;
+    border-color: #e06259;
+
+    &:hover {
+      background: darken(#cc180b, 2%);
+    }
   }
 }
 

@@ -8,8 +8,6 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import Nav from "./components/gui/Nav.vue";
-import { NavMenuItem } from "./components/types/unit-types";
-import { homeNav, gameSettingsNav } from "./components/helpers/nav-items";
 
 export default defineComponent({
   components: {

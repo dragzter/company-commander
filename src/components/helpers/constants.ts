@@ -35,3 +35,17 @@ export const recruitmentNav: NavMenuItem = {
   text: "Recruitment",
   css_id: "recruitment-link",
 };
+
+export const tableHeaders = [
+  "Name",
+  "Rank",
+  "Job",
+  "Level",
+  "Veterancy",
+  "Morale",
+  "Combat Power",
+  "Leadership",
+  "Evasion",
+  "Hit Chance",
+  "Experience",
+];
