@@ -45,17 +45,17 @@ export default defineComponent({
         "sniper",
       ];
 
-      const teamsInTheCompany = potentialTeams.filter((team: string) => {
-        return companyProps.includes(team);
-      });
-
-      teamsInTheCompany.forEach((team: string) => {
-        allSoldiers.push(
-          companyData[team].assistant,
-          companyData[team].leader,
-          ...companyData[team].crew
-        );
-      });
+      potentialTeams
+        .filter((team: string) => {
+          return companyProps.includes(team);
+        })
+        .forEach((team: string) => {
+          allSoldiers.push(
+            companyData[team].assistant,
+            companyData[team].leader,
+            ...companyData[team].crew
+          );
+        });
 
       allSoldiers.push(...companyData.infantry);
 

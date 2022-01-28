@@ -12,9 +12,9 @@
         </tr>
       </thead>
       <tbody>
-        <template v-for="row in tableData.rowData" :key="row.id">
+        <template v-for="(row, index) in tableData.rowData" :key="row.id">
           <tr>
-            <td>{{ row.name }}</td>
+            <td>{{ index + 1 }}. {{ row.name }}</td>
             <td>{{ row.rank }}</td>
             <td>{{ row.job }}</td>
             <td>{{ row.level }}</td>
