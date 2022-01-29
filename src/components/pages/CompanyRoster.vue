@@ -3,7 +3,7 @@
     <div class="col flex"><h1>Company Roster</h1></div>
     <div class="col flex justify-end">
       <button class="btn-green">Start</button>
-      <button class="m0">Edit Company</button>
+      <button @click="handleEditCompany" class="m0">Edit Company</button>
     </div>
   </div>
 
@@ -19,10 +19,16 @@ import {
   Soldier,
   SoldierDataCells,
 } from "../types/unit-types";
-import { generateSupportTeam } from "../helpers/generate-support-team";
-import { SupportTeamList } from "../types/enums";
 import { tableHeaders } from "../helpers/constants";
 import Table from "../gui/Table.vue";
+import { homeNav, gameSettingsNav, rosterNav } from "../helpers/constants";
+import {
+  loadGameObject,
+  itemInStorage,
+  saveGameObject,
+  eraseGameObject,
+} from "../helpers/save-game";
+import router from "../../router";
 
 export default defineComponent({
   components: {
@@ -37,6 +43,20 @@ export default defineComponent({
     const getCompanyRoster = (): Company => {
       return store.getters["getCompanyRoster"];
     };
+
+    const handleEditCompany = () => {
+      const confirmation = confirm(
+        "This will erase your existing company.  Are you sure you want to proceed?"
+      );
+
+      if (confirmation) {
+        eraseGameObject("company");
+        store.commit("ERASE_COMPANY", {});
+        router.push({ name: "GameSettings" });
+      }
+    };
+
+    const handleStartGame = () => {};
 
     const consolidateSoldiers = (companyData: any): Soldier[] => {
       const consolidatedSoldierArray = [];
@@ -97,12 +117,17 @@ export default defineComponent({
     );
 
     onMounted(() => {
-      companyRoster.value = getCompanyRoster();
-      console.log(companyRoster.value);
+      store.dispatch("setNavItems", [homeNav, rosterNav]);
+      if (itemInStorage("company")) {
+        companyRoster.value = loadGameObject("company");
+      } else {
+        companyRoster.value = getCompanyRoster();
+      }
     });
 
     return {
       companyTableData,
+      handleEditCompany,
     };
   },
 });

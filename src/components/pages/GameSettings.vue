@@ -50,7 +50,7 @@
       </div>
     </div>
     <div class="input-wrapper">
-      <button @click="handleSave">Save</button>
+      <button @click="handleSave">Save & Continue</button>
     </div>
   </div>
 </template>
@@ -63,20 +63,21 @@ import { createCompany } from "../helpers/create-company";
 import Select from "../gui/Select.vue";
 import { Company } from "../types/unit-types";
 import router from "../../router";
-import { gameSettingsNav, homeNav, rosterNav } from "../helpers/constants";
+import { homeNav, gameSettingsNav, rosterNav } from "../helpers/constants";
+import { saveGameObject } from "../helpers/save-game";
 
 export default defineComponent({
   components: {
     Select,
   },
   setup() {
-    const companyName = ref<string>("Wardogs");
     const companyType = ref<string>("mercenary");
+    const companyName = ref<string>("Wardogs");
     const gameDifficulty = ref<string>("easy");
-    const isSaved = ref<boolean>(false);
-    const store = useStore();
     const showInfo = ref<boolean>(false);
+    const isSaved = ref<boolean>(false);
     const company = ref<Company>();
+    const store = useStore();
 
     /**
      * Prop Configs
@@ -119,7 +120,7 @@ export default defineComponent({
       isSaved.value = true;
       company.value = createCompany(companyName.value);
       setGameDifficulty();
-      setCompany();
+      setCompanyInState();
     };
 
     /**
@@ -129,19 +130,20 @@ export default defineComponent({
       store.commit(Mutations.SET_GAME_DIFFICULTY, gameDifficulty.value);
     };
 
-    const setCompany = () => {
+    const setCompanyInState = () => {
+      saveGameObject("company", company.value);
       store.dispatch("setCompany", company.value);
     };
 
     const updateNavItems = () => {
-      store.dispatch("setNavItems", [rosterNav]);
+      store.dispatch("setNavItems", [homeNav, rosterNav]);
     };
 
     /**
      * Lifecycle Hooks
      */
     onMounted(() => {
-      store.dispatch("setNavItems", [gameSettingsNav, rosterNav]);
+      store.dispatch("setNavItems", [homeNav, gameSettingsNav]);
     });
 
     watch(

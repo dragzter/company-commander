@@ -9,17 +9,30 @@
                |_|            |__/                                               
 </pre
     >
-    <p style="text-align: center">v0.3.0</p>
+    <p style="text-align: center">v0.3.1</p>
   </div>
   <div style="text-align: center; margin-top: 25px">
-    <router-link :to="{ name: 'GameSettings' }">Launch Campaign</router-link>
+    <router-link class="btn-link" :to="{ name: 'GameSettings' }">{{
+      linkText
+    }}</router-link>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { computed, defineComponent } from "vue";
+import { itemInStorage } from "../helpers/save-game";
 
 export default defineComponent({
-  setup() {},
+  setup() {
+    const linkText = computed(() => {
+      return itemInStorage("company")
+        ? "Continue to Campaign"
+        : "Launch Campaign";
+    });
+
+    return {
+      linkText,
+    };
+  },
 });
 </script>
 <style lang="scss">

@@ -9,8 +9,8 @@
         class="game-settings"
         title="Game Settings"
         :to="{ name: 'GameMenu' }"
-        >&#9881;</router-link
-      >
+        ><i class="fas fa-cog"></i
+      ></router-link>
     </div>
   </div>
 </template>
@@ -42,7 +42,6 @@ h4 {
 }
 .game-settings {
   font-size: 26px;
-  border: 1px solid #000;
   border-radius: 30px;
   padding: 0 5px;
 }

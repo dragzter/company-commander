@@ -6,6 +6,7 @@ export enum Mutations {
   SET_ROSTER = "SET_ROSTER",
   SET_COMPANY = "SET_COMPANY",
   SET_NAV_ITEMS = "SET_NAV_ITEMS",
+  ERASE_COMPANY = "ERASE_COMPANY",
 }
 
 export const mutations = {
@@ -17,5 +18,8 @@ export const mutations = {
   },
   [Mutations.SET_NAV_ITEMS]: (state: GameState, payload: NavMenuItem[]) => {
     state.navItems = payload;
+  },
+  [Mutations.ERASE_COMPANY]: (state: GameState, payload: any) => {
+    state.company = payload;
   },
 };

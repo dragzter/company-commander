@@ -66,7 +66,7 @@ button {
   border-radius: 0;
   border-radius: 2px;
   background: #eee;
-  border: 1px solid #ccc;
+  border: 2px solid #ccc;
   cursor: pointer;
   margin-right: 15px;
 
@@ -135,10 +135,10 @@ a {
 a {
   text-decoration: none;
   padding: 5px 12px;
-
   color: #000;
+
   &:hover {
-    background: darken(#fff, 4%);
+    background: darken(#fff, 4%) !important;
   }
 }
 
