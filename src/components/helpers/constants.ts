@@ -49,3 +49,12 @@ export const tableHeaders = [
   "Hit Chance",
   "Experience",
 ];
+
+export const companyTeams = [
+  "commandTeam",
+  "mgCrew",
+  "mortarCrew",
+  "reconCrew",
+  "medCrew",
+  "sniper",
+];

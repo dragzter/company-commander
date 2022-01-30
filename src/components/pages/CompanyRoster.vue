@@ -24,7 +24,7 @@ import {
 } from "../types/unit-types";
 import { tableHeaders } from "../helpers/constants";
 import Table from "../gui/Table.vue";
-import { gameSettingsNav, rosterNav } from "../helpers/constants";
+import { gameSettingsNav, rosterNav, companyTeams } from "../helpers/constants";
 import {
   loadGameObject,
   itemInStorage,
@@ -32,6 +32,8 @@ import {
   eraseGameObject,
 } from "../helpers/save-game";
 import router from "../../router";
+import { SaveObjects } from "../types/enums";
+import { Getters } from "../../store/getters";
 
 export default defineComponent({
   components: {
@@ -44,7 +46,7 @@ export default defineComponent({
     const allSoldiers = ref<Soldier[]>([]);
 
     const getCompanyRoster = (): Company => {
-      return store.getters["getCompanyRoster"];
+      return store.getters[Getters.GET_COMPANY_ROSTER];
     };
 
     const handleEditCompany = () => {
@@ -53,7 +55,8 @@ export default defineComponent({
       );
 
       if (confirmation) {
-        eraseGameObject("company");
+        eraseGameObject(SaveObjects.COMPANY);
+        eraseGameObject(SaveObjects.SOLDIERS);
         store.commit("ERASE_COMPANY", {});
         router.push({ name: "GameSettings" });
       }
@@ -72,7 +75,7 @@ export default defineComponent({
       const consolidatedSoldierArray = [];
       const companyProps = Object.keys(companyData);
 
-      ["commandTeam", "mgCrew", "mortarCrew", "reconCrew", "medCrew", "sniper"]
+      companyTeams
         .filter((team: string) => {
           return companyProps.includes(team);
         })
@@ -85,7 +88,7 @@ export default defineComponent({
         });
 
       consolidatedSoldierArray.push(...companyData.infantry);
-      saveGameObject("soldiers", consolidatedSoldierArray);
+      saveGameObject(SaveObjects.SOLDIERS, consolidatedSoldierArray);
       return consolidatedSoldierArray;
     };
 
@@ -129,8 +132,8 @@ export default defineComponent({
 
     onMounted(() => {
       store.dispatch("setNavItems", [rosterNav]);
-      if (itemInStorage("company")) {
-        companyRoster.value = loadGameObject("company");
+      if (itemInStorage(SaveObjects.COMPANY)) {
+        companyRoster.value = loadGameObject(SaveObjects.COMPANY);
         store.dispatch("setCompany", companyRoster.value);
       } else {
         companyRoster.value = getCompanyRoster();

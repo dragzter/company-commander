@@ -20,11 +20,12 @@
 <script lang="ts">
 import { computed, defineComponent } from "vue";
 import { itemInStorage } from "../helpers/save-game";
+import { SaveObjects } from "../types/enums";
 
 export default defineComponent({
   setup() {
     const linkText = computed(() => {
-      return itemInStorage("company")
+      return itemInStorage(SaveObjects.COMPANY)
         ? "Continue to Campaign"
         : "Launch Campaign";
     });

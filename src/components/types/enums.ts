@@ -10,6 +10,12 @@ export enum Ranks {
   COLONEL = "COLONEL",
 }
 
+export enum SaveObjects {
+  SOLDIERS = "SOLDIERS",
+  COMPANY = "COMPANY",
+  NAVIGATION = "NAVIGATION",
+}
+
 export enum SoldierJobs {
   RIFLEMAN = "RIFLEMAN",
   SQUAD_LEADER = "SQUAD_LEADER",
@@ -31,7 +37,13 @@ export enum SoldierJobs {
   COMPANY_COMMANDER = "COMPANY_COMMANDER",
 }
 
-// Special Forces?
+export enum SFSoldierJobs {
+  SF_SQUAD_LEADER = "SF_SQUAD_LEADER",
+  SF_SQUAD_GUNNER = "SF_SQUAD_GUNNER",
+  SF_OPERATOR = "SF_OPERATOR",
+  SF_DEMOLITIONIST = "SF_DEMOLITIONIST",
+  SF_MARKSMAN = "SF_MARKSMAN",
+}
 
 export enum SupportTeamList {
   MG_TEAM = "MG_TEAM",

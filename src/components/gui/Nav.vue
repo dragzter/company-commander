@@ -23,6 +23,7 @@ import NavItem from "./NavItem.vue";
 import { useStore } from "vuex";
 import { itemInStorage } from "../helpers/save-game";
 import { rosterNav } from "../helpers/constants";
+import { Getters } from "../../store/getters";
 
 export default defineComponent({
   components: {
@@ -32,7 +33,7 @@ export default defineComponent({
   setup() {
     const store = useStore();
     const navItemList = computed(() => {
-      return store.getters["getNavItems"];
+      return store.getters[Getters.GET_NAV_ITEMS];
     });
 
     const setNavItems = () => {

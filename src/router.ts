@@ -8,6 +8,7 @@ import Recruitment from "./components/pages/RecruitmentForum.vue";
 import GameMenu from "./components/pages/GameMenu.vue";
 import CompanyDetailView from "./components/pages/CompanyDetailView.vue";
 import { itemInStorage } from "./components/helpers/save-game";
+import { SaveObjects } from "./components/types/enums";
 
 const routes = [
   {
@@ -30,7 +31,7 @@ const routes = [
     name: "GameSettings",
     component: GameSettings,
     beforeEnter: (to: any, from: any, next: any) => {
-      if (itemInStorage("company")) {
+      if (itemInStorage(SaveObjects.COMPANY)) {
         next({ name: "Roster" });
       } else {
         next();

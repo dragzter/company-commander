@@ -65,6 +65,7 @@ import { Company } from "../types/unit-types";
 import router from "../../router";
 import { gameSettingsNav, rosterNav } from "../helpers/constants";
 import { saveGameObject } from "../helpers/save-game";
+import { SaveObjects } from "../types/enums";
 
 export default defineComponent({
   components: {
@@ -132,7 +133,7 @@ export default defineComponent({
     };
 
     const setCompanyInState = () => {
-      saveGameObject("company", company.value);
+      saveGameObject(SaveObjects.COMPANY, company.value);
       store.dispatch("setCompany", company.value);
     };
 
