@@ -2,12 +2,11 @@
   <div class="company-view">
     <template v-for="soldier in soldiers" :key="soldier.name">
       <div class="soldier">
-        <span :title="soldier.name">
-          [&#129686;
+        <span :title="soldier.name + ' ' + soldier.rank.value">
+          &#129686;
           {{ soldier.name.split(" ")[0][0].toLowerCase() }}.{{
             soldier.name.split(" ")[1][0].toLowerCase()
           }}
-          ]
         </span>
       </div>
     </template>
@@ -36,6 +35,11 @@ export default defineComponent({
   font-size: 24px;
   width: 110px;
   margin-bottom: 12px;
+  border: 1px dashed black;
+  padding: 5px;
+  text-align: center;
+  margin-right: 8px;
+  cursor: pointer;
   span {
     text-align: center;
     display: inline-block;
