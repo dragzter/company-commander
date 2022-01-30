@@ -3,6 +3,9 @@
     <div class="col flex"><h1>Company Roster</h1></div>
     <div class="col flex justify-end">
       <button class="btn-green">Start</button>
+      <button @click="handleClickViewCompany" class="btn-main">
+        View Company
+      </button>
       <button @click="handleEditCompany" class="m0">Edit Company</button>
     </div>
   </div>
@@ -21,7 +24,7 @@ import {
 } from "../types/unit-types";
 import { tableHeaders } from "../helpers/constants";
 import Table from "../gui/Table.vue";
-import { homeNav, gameSettingsNav, rosterNav } from "../helpers/constants";
+import { gameSettingsNav, rosterNav } from "../helpers/constants";
 import {
   loadGameObject,
   itemInStorage,
@@ -56,8 +59,15 @@ export default defineComponent({
       }
     };
 
+    const handleClickViewCompany = () => {
+      router.push({ name: "CompanyView" });
+    };
+
     const handleStartGame = () => {};
 
+    /**
+     * Extract soldiers form all teams and infantry sections
+     */
     const consolidateSoldiers = (companyData: any): Soldier[] => {
       const consolidatedSoldierArray = [];
       const companyProps = Object.keys(companyData);
@@ -75,6 +85,7 @@ export default defineComponent({
         });
 
       consolidatedSoldierArray.push(...companyData.infantry);
+      saveGameObject("soldiers", consolidatedSoldierArray);
       return consolidatedSoldierArray;
     };
 
@@ -117,9 +128,10 @@ export default defineComponent({
     );
 
     onMounted(() => {
-      store.dispatch("setNavItems", [homeNav, rosterNav]);
+      store.dispatch("setNavItems", [rosterNav]);
       if (itemInStorage("company")) {
         companyRoster.value = loadGameObject("company");
+        store.dispatch("setCompany", companyRoster.value);
       } else {
         companyRoster.value = getCompanyRoster();
       }
@@ -127,6 +139,7 @@ export default defineComponent({
 
     return {
       companyTableData,
+      handleClickViewCompany,
       handleEditCompany,
     };
   },

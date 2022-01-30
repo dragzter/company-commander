@@ -6,7 +6,8 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
+import { NavMenuItem } from "../types/unit-types";
 
 export default defineComponent({
   props: {

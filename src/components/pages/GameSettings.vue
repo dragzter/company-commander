@@ -63,7 +63,7 @@ import { createCompany } from "../helpers/create-company";
 import Select from "../gui/Select.vue";
 import { Company } from "../types/unit-types";
 import router from "../../router";
-import { homeNav, gameSettingsNav, rosterNav } from "../helpers/constants";
+import { gameSettingsNav, rosterNav } from "../helpers/constants";
 import { saveGameObject } from "../helpers/save-game";
 
 export default defineComponent({
@@ -121,6 +121,7 @@ export default defineComponent({
       company.value = createCompany(companyName.value);
       setGameDifficulty();
       setCompanyInState();
+      router.push({ name: "Roster" });
     };
 
     /**
@@ -136,14 +137,14 @@ export default defineComponent({
     };
 
     const updateNavItems = () => {
-      store.dispatch("setNavItems", [homeNav, rosterNav]);
+      store.dispatch("setNavItems", [rosterNav]);
     };
 
     /**
      * Lifecycle Hooks
      */
     onMounted(() => {
-      store.dispatch("setNavItems", [homeNav, gameSettingsNav]);
+      store.dispatch("setNavItems", [gameSettingsNav]);
     });
 
     watch(

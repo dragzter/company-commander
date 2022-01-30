@@ -2,6 +2,9 @@
   <div class="nav-wrapper">
     <div><h4>COMPANY COMMANDER</h4></div>
     <div>
+      <div class="nav-item">
+        <router-link :to="{ name: 'Home' }">Home</router-link>
+      </div>
       <template v-for="item in navItemList" :key="item.text">
         <nav-item :destination="item" />
       </template>
@@ -15,9 +18,11 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, defineComponent } from "vue";
+import { computed, defineComponent, onMounted } from "vue";
 import NavItem from "./NavItem.vue";
 import { useStore } from "vuex";
+import { itemInStorage } from "../helpers/save-game";
+import { rosterNav } from "../helpers/constants";
 
 export default defineComponent({
   components: {
@@ -28,6 +33,16 @@ export default defineComponent({
     const store = useStore();
     const navItemList = computed(() => {
       return store.getters["getNavItems"];
+    });
+
+    const setNavItems = () => {
+      if (itemInStorage("company")) {
+        store.dispatch("setNavItems", [rosterNav]);
+      }
+    };
+
+    onMounted(() => {
+      setNavItems();
     });
 
     return {

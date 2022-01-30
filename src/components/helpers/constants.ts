@@ -1,10 +1,10 @@
 import { NavMenuItem } from "../types/unit-types";
 
-export const homeNav: NavMenuItem = {
-  url: "Home",
-  text: "Home",
-  css_id: "home-link",
-};
+// export const homeNav: NavMenuItem = {
+//   url: "Home",
+//   text: "Home",
+//   css_id: "home-link",
+// };
 
 export const rosterNav: NavMenuItem = {
   url: "Roster",

@@ -6,6 +6,7 @@ import Missions from "./components/pages/Missions.vue";
 import Provisions from "./components/pages/Provisions.vue";
 import Recruitment from "./components/pages/RecruitmentForum.vue";
 import GameMenu from "./components/pages/GameMenu.vue";
+import CompanyDetailView from "./components/pages/CompanyDetailView.vue";
 import { itemInStorage } from "./components/helpers/save-game";
 
 const routes = [
@@ -18,6 +19,11 @@ const routes = [
     path: "/roster",
     name: "Roster",
     component: CompanyRoster,
+  },
+  {
+    path: "/company",
+    name: "CompanyView",
+    component: CompanyDetailView,
   },
   {
     path: "/game-settings",
