@@ -21,7 +21,7 @@
 import { computed, defineComponent, onMounted } from "vue";
 import NavItem from "./NavItem.vue";
 import { useStore } from "vuex";
-import { itemInStorage } from "../helpers/save-game";
+import { itemInStorage } from "../helpers/memory-management";
 import { rosterNav } from "../helpers/constants";
 import { Getters } from "../../store/getters";
 

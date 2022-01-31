@@ -1,37 +1,21 @@
 <template>
   <div class="company-view">
     <template v-for="soldier in soldiers" :key="soldier.name">
-      <div class="soldier">
-        <div class="tooltip">
-          <span class="tooltiptext" style="word-break: break-all">
-            {{ soldier.name }}<br />
-            Level: {{ soldier.level }} {{ soldier.job.replaceAll("_", " ")
-            }}<br />
-            {{ soldier.rank.value.replaceAll("_", " ") }}<br />
-            ----------------- <br />
-            Hit: {{ soldier.hitChance }}%<br />
-            Combat Power: {{ soldier.combatPower }}<br />
-            Leadership: {{ soldier.leadership }}<br />
-            Morale: {{ soldier.morale }}<br />
-          </span>
-          <span class="soldier-wrapper">
-            &#129686;
-            {{ soldier.name.split(" ")[0][0].toLowerCase() }}.{{
-              soldier.name.split(" ")[1][0].toLowerCase()
-            }}
-          </span>
-        </div>
-      </div>
+      <SoldierSingle :soldier="soldier" />
     </template>
   </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent } from "vue";
-import { loadGameObject } from "../helpers/save-game";
+import { loadGameObject } from "../helpers/memory-management";
 import { SaveObjects } from "../types/enums";
+import SoldierSingle from "../gui/SoldierSingle.vue";
 
 export default defineComponent({
+  components: {
+    SoldierSingle,
+  },
   setup() {
     const soldiers = computed(() => {
       return loadGameObject(SaveObjects.SOLDIERS);
@@ -51,10 +35,10 @@ export default defineComponent({
   display: inline-block;
   font-size: 24px;
   width: 110px;
-  margin-bottom: 16px;
-  border: 1px dashed black;
+  margin-bottom: 15px;
+  border: 2px dashed black;
   text-align: center;
-  margin-right: 8px;
+  margin-right: 15px;
   cursor: pointer;
   .soldier-wrapper {
     display: block;

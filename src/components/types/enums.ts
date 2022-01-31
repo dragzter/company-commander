@@ -13,7 +13,10 @@ export enum Ranks {
 export enum SaveObjects {
   SOLDIERS = "SOLDIERS",
   COMPANY = "COMPANY",
+  COMPANY_COMMANDER = "COMPANY_COMMANDER",
   NAVIGATION = "NAVIGATION",
+  KIA = "KIA",
+  BATTLES = "BATTLES",
 }
 
 export enum SoldierJobs {

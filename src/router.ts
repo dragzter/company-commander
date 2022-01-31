@@ -6,8 +6,9 @@ import Missions from "./components/pages/Missions.vue";
 import Provisions from "./components/pages/Provisions.vue";
 import Recruitment from "./components/pages/RecruitmentForum.vue";
 import GameMenu from "./components/pages/GameMenu.vue";
+import Dashboard from "./components/pages/Dashboard.vue";
 import CompanyDetailView from "./components/pages/CompanyDetailView.vue";
-import { itemInStorage } from "./components/helpers/save-game";
+import { itemInStorage } from "./components/helpers/memory-management";
 import { SaveObjects } from "./components/types/enums";
 
 const routes = [
@@ -15,6 +16,11 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+  },
+  {
+    path: "/dashboard",
+    name: "Dashboard",
+    component: Dashboard,
   },
   {
     path: "/roster",

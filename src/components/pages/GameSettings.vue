@@ -64,7 +64,7 @@ import Select from "../gui/Select.vue";
 import { Company } from "../types/unit-types";
 import router from "../../router";
 import { gameSettingsNav, rosterNav } from "../helpers/constants";
-import { saveGameObject } from "../helpers/save-game";
+import { saveGameObject } from "../helpers/memory-management";
 import { SaveObjects } from "../types/enums";
 
 export default defineComponent({

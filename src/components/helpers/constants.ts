@@ -1,4 +1,4 @@
-import { NavMenuItem } from "../types/unit-types";
+import { NavMenuItem, Soldier } from "../types/unit-types";
 
 // export const homeNav: NavMenuItem = {
 //   url: "Home",
@@ -57,4 +57,9 @@ export const companyTeams = [
   "reconCrew",
   "medCrew",
   "sniper",
+  "sfTeam",
 ];
+
+export const blankSoldier: Soldier = {
+  name: "Unknown",
+};

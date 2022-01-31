@@ -2,9 +2,11 @@
   <div class="row flex align-center justify-between">
     <div class="col flex"><h1>Company Roster</h1></div>
     <div class="col flex justify-end">
-      <button class="btn-green">Start</button>
+      <button @click="handleGoToDashboard" class="btn-green">
+        Go To Dashboard
+      </button>
       <button @click="handleClickViewCompany" class="btn-main">
-        View Company
+        View Soldiers
       </button>
       <button @click="handleEditCompany" class="m0">Edit Company</button>
     </div>
@@ -30,10 +32,11 @@ import {
   itemInStorage,
   saveGameObject,
   eraseGameObject,
-} from "../helpers/save-game";
+} from "../helpers/memory-management";
 import router from "../../router";
 import { SaveObjects } from "../types/enums";
 import { Getters } from "../../store/getters";
+import { consolidateSoldiers } from "../helpers/soldier-utility-functions";
 
 export default defineComponent({
   components: {
@@ -47,6 +50,10 @@ export default defineComponent({
 
     const getCompanyRoster = (): Company => {
       return store.getters[Getters.GET_COMPANY_ROSTER];
+    };
+
+    const handleGoToDashboard = () => {
+      router.push({ name: "Dashboard" });
     };
 
     const handleEditCompany = () => {
@@ -69,41 +76,18 @@ export default defineComponent({
     const handleStartGame = () => {};
 
     /**
-     * Extract soldiers form all teams and infantry sections
-     */
-    const consolidateSoldiers = (companyData: any): Soldier[] => {
-      const consolidatedSoldierArray = [];
-      const companyProps = Object.keys(companyData);
-
-      companyTeams
-        .filter((team: string) => {
-          return companyProps.includes(team);
-        })
-        .forEach((team: string) => {
-          consolidatedSoldierArray.push(
-            companyData[team].assistant,
-            companyData[team].leader,
-            ...companyData[team].crew
-          );
-        });
-
-      consolidatedSoldierArray.push(...companyData.infantry);
-      saveGameObject(SaveObjects.SOLDIERS, consolidatedSoldierArray);
-      return consolidatedSoldierArray;
-    };
-
-    /**
      * Compile Table Data
      */
     const createTableData = (companyData: Company) => {
       allSoldiers.value = consolidateSoldiers(companyData);
+      saveGameObject(SaveObjects.SOLDIERS, allSoldiers.value);
 
       companyTableData.value = {
         tableHeaders,
         rowData: allSoldiers.value.map((soldier: Soldier): SoldierDataCells => {
           return {
             name: soldier.name,
-            rank: soldier.rank.value,
+            rank: soldier.rank?.value,
             job: soldier.job,
             level: soldier.level,
             veterancy: soldier.veterancy,
@@ -144,6 +128,7 @@ export default defineComponent({
       companyTableData,
       handleClickViewCompany,
       handleEditCompany,
+      handleGoToDashboard,
     };
   },
 });

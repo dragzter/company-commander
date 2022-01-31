@@ -35,31 +35,12 @@ export interface SoldierRank {
 }
 
 /**
- * Name of the Enemy killed
- */
-export interface EnemyKill {
-  name: string;
-}
-
-/**
  * A single log entry for a Soldier
  * Meant to keep track of kills and battle names
  */
 export interface BattleLogEntry {
-  eventName: string;
-  kills: EnemyKill[];
-}
-
-/**
- * When a unit is killed we track
- * some basic info
- */
-export interface KiaUnit {
   name: string;
-  rank: SoldierRank;
-  level: number;
-  timeOfDeath?: string;
-  loacationOfDeath?: string;
+  kills: Soldier[];
 }
 
 /**
@@ -85,18 +66,18 @@ export interface BattleEvent {
  */
 export interface Soldier {
   name: string;
-  id: string;
-  hitChance: number; // Min 40%, Max 95%
-  evasion: number; // Max 10
-  level: number; // Max 30
-  wounds: number; // How many hits Soldier can take
-  veterancy: number; // Max 3
-  rank: SoldierRank;
-  morale: number; //  MAX 10
-  combatPower: number; // Max 25
-  leadership: number; // Max 10
-  experience: number; // No max
-  job: SoldierJobs;
+  id?: string;
+  hitChance?: number; // Min 40%, Max 95%
+  evasion?: number; // Max 10
+  level?: number; // Max 30
+  wounds?: number; // How many hits Soldier can take
+  veterancy?: number; // Max 3
+  rank?: SoldierRank;
+  morale?: number; //  MAX 10
+  combatPower?: number; // Max 25
+  leadership?: number; // Max 10
+  experience?: number; // No max
+  job?: SoldierJobs;
   numberOfBattlesFought?: number; // No max
   special?: object | string;
   battleLog?: BattleLogEntry[];
@@ -126,6 +107,7 @@ export interface Company {
   mortarCrew?: SupportTeam;
   reconCrew?: SupportTeam;
   medCrew?: SupportTeam;
+  sfTeam?: SupportTeam;
   sniper?: Soldier;
   headCount?: number;
 }
@@ -168,14 +150,22 @@ export interface TableData {
 
 export interface SoldierDataCells {
   name: string;
-  rank: string;
-  job: string;
-  level: number;
-  veterancy: number;
-  morale: number;
-  combatPower: number;
-  leadership: number;
-  evasion: number;
-  hitChance: number;
-  experience: number;
+  rank?: string;
+  job?: string;
+  level?: number;
+  veterancy?: number;
+  morale?: number;
+  combatPower?: number;
+  leadership?: number;
+  evasion?: number;
+  hitChance?: number;
+  experience?: number;
+}
+
+export interface Stats {
+  count: number;
+  commander?: Soldier;
+  teams?: SupportTeam[];
+  battles?: number;
+  kia?: Soldier[];
 }

@@ -15,8 +15,8 @@
         <template v-for="(row, index) in tableData.rowData" :key="row.id">
           <tr>
             <td>{{ index + 1 }}. {{ row.name }}</td>
-            <td>{{ row.rank }}</td>
-            <td>{{ row.job }}</td>
+            <td>{{ row.rank.replaceAll("_", " ") }}</td>
+            <td>{{ row.job.replaceAll("_", " ") }}</td>
             <td>{{ row.level }}</td>
             <td>{{ row.veterancy }}</td>
             <td>{{ row.morale }}</td>
@@ -56,7 +56,7 @@ table {
   th {
     border: 1px solid #c0c0c0;
     text-align: left;
-    padding: 3px 6px;
+    padding: 5px;
   }
 }
 
