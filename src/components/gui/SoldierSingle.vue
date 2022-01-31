@@ -12,7 +12,7 @@
         Morale: {{ soldier.morale }}<br />
       </span>
       <span class="soldier-wrapper">
-        &#129686;
+        {{ soldier.icon }}
         {{ soldier.name.split(" ")[0][0].toLowerCase() }}.{{
           soldier.name.split(" ")[1][0].toLowerCase()
         }}

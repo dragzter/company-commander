@@ -40,6 +40,7 @@ export const generateSoldier = (config: SoldierGeneratorConfig): Soldier => {
     morale: config.getMorale(ATTRIBUTE_LIMITS.morale),
     leadership: config.getLeadership(ATTRIBUTE_LIMITS.leadership),
     job: config.getJob(),
+    icon: config.icon,
   };
 };
 

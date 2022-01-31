@@ -81,6 +81,7 @@ export interface Soldier {
   numberOfBattlesFought?: number; // No max
   special?: object | string;
   battleLog?: BattleLogEntry[];
+  icon?: string;
 }
 export interface SupportTeam {
   leader?: Soldier;
@@ -128,6 +129,7 @@ export interface SoldierGeneratorConfig {
   getHitChance: Function;
   getLeadership: Function;
   getJob: Function;
+  icon: string;
   wounds: number;
 }
 

@@ -19,6 +19,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(55, 70, max),
       getJob: () => Job.RIFLEMAN,
       wounds: 1,
+      icon: "🪖",
     };
   },
   [Job.RECON_RIFLEMAN as string]: (): SldrCnfg => {
@@ -30,6 +31,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(60, 70, max),
       getJob: () => Job.RECON_RIFLEMAN,
       wounds: 1,
+      icon: "🪖",
     };
   },
   [Job.MG_CREWMAN as string]: (): SldrCnfg => {
@@ -41,6 +43,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(55, 65, max),
       getJob: () => Job.MG_CREWMAN,
       wounds: 1,
+      icon: "🛡️",
     };
   },
   [Job.MG_CREW_LOADER as string]: (): SldrCnfg => {
@@ -52,6 +55,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(50, 60, max),
       getJob: () => Job.MG_CREW_LOADER,
       wounds: 1,
+      icon: "🛡️",
     };
   },
   [Job.MG_CREW_GUNNER as string]: (): SldrCnfg => {
@@ -63,6 +67,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(55, 70, max),
       getJob: () => Job.MG_CREW_GUNNER,
       wounds: 1,
+      icon: "🛡️",
     };
   },
   [Job.MORTAR_TEAM_LEADER as string]: (): SldrCnfg => {
@@ -74,6 +79,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(55, 60, max),
       getJob: () => Job.MORTAR_TEAM_LEADER,
       wounds: 1,
+      icon: "🪖",
     };
   },
   [Job.MORTAR_CREWMAN as string]: (): SldrCnfg => {
@@ -85,6 +91,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(55, 60, max),
       getJob: () => Job.MORTAR_CREWMAN,
       wounds: 1,
+      icon: "🪖",
     };
   },
   [Job.SQUAD_LEADER as string]: (): SldrCnfg => {
@@ -96,6 +103,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(60, 70, max),
       getJob: () => Job.SQUAD_LEADER,
       wounds: 1,
+      icon: "🪖",
     };
   },
   [Job.SQUAD_GUNNER as string]: (): SldrCnfg => {
@@ -107,6 +115,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(55, 70, max),
       getJob: () => Job.SQUAD_GUNNER,
       wounds: 1,
+      icon: "🪖",
     };
   },
   [Job.SNIPER as string]: (): SldrCnfg => {
@@ -118,6 +127,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(75, 80, max),
       getJob: () => Job.SNIPER,
       wounds: 2,
+      icon: "🪖",
     };
   },
   [Job.MEDIC as string]: (): SldrCnfg => {
@@ -129,6 +139,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(45, 55, max),
       getJob: () => Job.MEDIC,
       wounds: 2,
+      icon: "🪖",
     };
   },
   [Job.SURGEON as string]: (): SldrCnfg => {
@@ -140,6 +151,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(45, 55, max),
       getJob: () => Job.SURGEON,
       wounds: 2,
+      icon: "🪖",
     };
   },
   [Job.PLATOON_COMMANDER as string]: (): SldrCnfg => {
@@ -151,6 +163,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(60, 70, max),
       getJob: () => Job.PLATOON_COMMANDER,
       wounds: 2,
+      icon: "🪖",
     };
   },
   [Job.COMPANY_COMMANDER as string]: (): SldrCnfg => {
@@ -162,6 +175,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(60, 70, max),
       getJob: () => Job.COMPANY_COMMANDER,
       wounds: 2,
+      icon: "⚔️",
     };
   },
   [Job.FIRE_TEAM_GUNNER as string]: (): SldrCnfg => {
@@ -173,6 +187,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(60, 70, max),
       getJob: () => Job.FIRE_TEAM_GUNNER,
       wounds: 1,
+      icon: "🪖",
     };
   },
   [Job.FIRE_TEAM_RIFLEMAN as string]: (): SldrCnfg => {
@@ -184,6 +199,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(60, 70, max),
       getJob: () => Job.FIRE_TEAM_RIFLEMAN,
       wounds: 1,
+      icon: "🪖",
     };
   },
   [Job.FIRE_TEAM_LEADER as string]: (): SldrCnfg => {
@@ -195,6 +211,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(60, 75, max),
       getJob: () => Job.FIRE_TEAM_LEADER,
       wounds: 2,
+      icon: "🪖",
     };
   },
 };

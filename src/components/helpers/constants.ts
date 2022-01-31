@@ -62,4 +62,5 @@ export const companyTeams = [
 
 export const blankSoldier: Soldier = {
   name: "Unknown",
+  icon: "&#10067;", // https://emojiguide.org/question-mark
 };
