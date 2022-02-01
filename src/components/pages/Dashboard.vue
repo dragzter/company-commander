@@ -7,8 +7,12 @@
           <div class="company-commander">
             <h3>
               Company Commander:<br />
-              {{ commander.name }} &#9733;
-              <span style="color: goldenrod">{{ commander.rank.value }}</span>
+              <span class="commander-name"
+                >{{ commander.name }} &#9733;
+                <span style="color: goldenrod">{{
+                  commander.rank.value
+                }}</span></span
+              >
             </h3>
           </div>
         </template>
@@ -38,7 +42,23 @@
         </template>
         <div class="soldier-count">Total Soldiers: {{ stats.count }}</div>
       </div>
-      <div class="company-breakdown"></div>
+      <div class="company-actions flex">
+        <div @click="navigateTo('Missions')" class="action flex align-center">
+          <h1>Missions</h1>
+        </div>
+        <div
+          @click="navigateTo('Recruitment')"
+          class="action flex align-center"
+        >
+          <h1>Recruitment</h1>
+        </div>
+        <div @click="navigateTo('Battlelog')" class="action flex align-center">
+          <h1>Battlelog</h1>
+        </div>
+        <div @click="navigateTo('Roster')" class="action flex align-center">
+          <h1>Roster</h1>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -46,13 +66,20 @@
 import { computed, defineComponent, PropType } from "vue";
 import { Company } from "../types/unit-types";
 import { getCompanyStats } from "../helpers/generate-stats";
+import router from "../../router";
 
 export default defineComponent({
   setup() {
     const stats = computed(() => {
       return getCompanyStats();
     });
+
+    const navigateTo = (target: string) => {
+      router.push({ name: target });
+    };
+
     return {
+      navigateTo,
       stats,
     };
   },
@@ -66,8 +93,36 @@ export default defineComponent({
       margin: 0;
     }
   }
+  .company-actions {
+    width: 100%;
+    border: 1px dashed #000;
+    margin-left: 35px;
+    flex-wrap: wrap;
+    .action {
+      display: flex;
+      flex: 1 0 auto;
+      width: 33%;
+      margin: 5px;
+      border: 1px solid #000;
+      cursor: pointer;
+      &:hover {
+        background-color: darken(#fff, 3%);
+      }
+      h1 {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    height: 500px;
+  }
   .company-commander {
     margin-bottom: 30px;
+    .commander-name {
+      padding: 3px 14px;
+      margin-top: 6px;
+      display: inline-block;
+      border: 1px dashed #000;
+    }
   }
   .support-team {
     margin-bottom: 30px;
