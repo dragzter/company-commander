@@ -8,10 +8,7 @@
       <template v-for="item in navItemList" :key="item.text">
         <nav-item :destination="item" />
       </template>
-      <router-link
-        class="game-settings"
-        title="Game Settings"
-        :to="{ name: 'GameMenu' }"
+      <router-link class="game-settings" title="Game Settings" :to="{ name: 'GameMenu' }"
         ><i class="fas fa-cog"></i
       ></router-link>
     </div>
@@ -22,7 +19,7 @@ import { computed, defineComponent, onMounted } from "vue";
 import NavItem from "./NavItem.vue";
 import { useStore } from "vuex";
 import { itemInStorage } from "../helpers/memory-management";
-import { rosterNav } from "../helpers/constants";
+import { missionsNav, rosterNav } from "../helpers/constants";
 import { Getters } from "../../store/getters";
 
 export default defineComponent({
@@ -37,8 +34,8 @@ export default defineComponent({
     });
 
     const setNavItems = () => {
-      if (itemInStorage("company")) {
-        store.dispatch("setNavItems", [rosterNav]);
+      if (itemInStorage("COMPANY")) {
+        store.dispatch("setNavItems", [missionsNav, rosterNav]);
       }
     };
 

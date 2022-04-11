@@ -9,12 +9,10 @@
                |_|            |__/                                               
 </pre
     >
-    <p style="text-align: center">v0.3.1</p>
+    <p style="text-align: center">v0.3.2</p>
   </div>
   <div style="text-align: center; margin-top: 25px">
-    <router-link class="btn-link" :to="{ name: 'GameSettings' }">{{
-      linkText
-    }}</router-link>
+    <router-link class="btn-link" :to="{ name: 'GameSettings' }">{{ linkText }}</router-link>
   </div>
 </template>
 <script lang="ts">
@@ -25,9 +23,7 @@ import { SaveObjects } from "../types/enums";
 export default defineComponent({
   setup() {
     const linkText = computed(() => {
-      return itemInStorage(SaveObjects.COMPANY)
-        ? "Continue to Campaign"
-        : "Launch Campaign";
+      return itemInStorage(SaveObjects.COMPANY) ? "Continue to Campaign" : "Launch Campaign";
     });
 
     return {

@@ -4,33 +4,21 @@
     <h5 @click="displayInfo">
       Game Info <span class="ui-pointer green-text">(click to show)</span>
     </h5>
-    <div
-      class="popup-copy game-info bg-light"
-      :class="{ 'is-shown': showInfo }"
-    >
+    <div class="popup-copy game-info bg-light" :class="{ 'is-shown': showInfo }">
+      <p>A company is formed with 85 Soldiers but can grow to up to 200 Soldiers.</p>
       <p>
-        A company is formed with 85 Soldiers but can grow to up to 200 Soldiers.
+        As units are lost in combat, the company commander (you) may replenish his company by
+        visiting the recruitment forum. A Company Commander may also dismiss units from his company.
       </p>
       <p>
-        As units are lost in combat, the company commander (you) may replenish
-        his company by visiting the recruitment forum. A Company Commander may
-        also dismiss units from his company.
-      </p>
-      <p>
-        Units gain experience as they participate in combat or receive wounds.
-        Experience is used to determine Rank (commanders discretion) and
-        veterancy (automatic).
+        Units gain experience as they participate in combat or receive wounds. Experience is used to
+        determine Rank (commanders discretion) and veterancy (automatic).
       </p>
     </div>
     <div>
       <div class="input-wrapper">
         <label class="bold" for="company-name">Comany Name</label>
-        <input
-          v-model="companyName"
-          type="text"
-          id="company-name"
-          placeholder="Wardogs..."
-        />
+        <input v-model="companyName" type="text" id="company-name" placeholder="Wardogs..." />
       </div>
       <div class="input-wrapper">
         <Select
@@ -61,9 +49,9 @@ import { useStore } from "vuex";
 import { Mutations } from "../../store/mutations";
 import { createCompany } from "../helpers/create-company";
 import Select from "../gui/Select.vue";
-import { Company } from "../types/unit-types";
+import { Company, NavMenuItem } from "../types/unit-types";
 import router from "../../router";
-import { gameSettingsNav, rosterNav } from "../helpers/constants";
+import { gameSettingsNav, missionsNav, rosterNav } from "../helpers/constants";
 import { saveGameObject } from "../helpers/memory-management";
 import { SaveObjects } from "../types/enums";
 
@@ -137,22 +125,14 @@ export default defineComponent({
       store.dispatch("setCompany", company.value);
     };
 
-    const updateNavItems = () => {
-      store.dispatch("setNavItems", [rosterNav]);
-    };
-
     /**
      * Lifecycle Hooks
      */
-    onMounted(() => {
-      store.dispatch("setNavItems", [gameSettingsNav]);
-    });
 
     watch(
       () => company.value,
       (newVal) => {
         if (newVal) {
-          updateNavItems();
           router.push({ name: "Roster" });
         }
       }

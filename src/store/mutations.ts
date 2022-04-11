@@ -17,7 +17,14 @@ export const mutations = {
     state.company = payload;
   },
   [Mutations.SET_NAV_ITEMS]: (state: GameState, payload: NavMenuItem[]) => {
-    state.navItems = payload;
+    const navItems = Array.from(new Set(payload));
+    //const current = [...state.navItems, ...navItems];
+    const current = [...state.navItems, ...navItems].filter(
+      (value, index, self) => index === self.findIndex((t) => t.url === value.url)
+    );
+    console.log(current);
+
+    state.navItems = current;
   },
   [Mutations.ERASE_COMPANY]: (state: GameState, payload: any) => {
     state.company = payload;

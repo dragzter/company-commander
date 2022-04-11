@@ -2,28 +2,18 @@
   <div class="row flex align-center justify-between">
     <div class="col flex"><h1>Company Roster</h1></div>
     <div class="col flex justify-end">
-      <button @click="handleGoToDashboard" class="btn-green">
-        Go To Dashboard
-      </button>
-      <button @click="handleClickViewCompany" class="btn-main">
-        View Soldiers
-      </button>
+      <button @click="handleGoToDashboard" class="btn-green">Go To Dashboard</button>
+      <button @click="handleClickViewCompany" class="btn-main">View Soldiers</button>
       <button @click="handleEditCompany" class="m0">Edit Company</button>
     </div>
   </div>
 
-  <Table :tableData="companyTableData" />
+  <Table :tableData="companyTableData ? companyTableData : {}" />
 </template>
 <script lang="ts">
 import { computed, defineComponent, onMounted, ref, watch } from "vue";
 import { useStore } from "vuex";
-import {
-  Company,
-  SupportTeam,
-  TableData,
-  Soldier,
-  SoldierDataCells,
-} from "../types/unit-types";
+import { Company, SupportTeam, TableData, Soldier, SoldierDataCells } from "../types/unit-types";
 import { tableHeaders } from "../helpers/constants";
 import Table from "../gui/Table.vue";
 import { gameSettingsNav, rosterNav, companyTeams } from "../helpers/constants";
@@ -115,7 +105,6 @@ export default defineComponent({
     );
 
     onMounted(() => {
-      store.dispatch("setNavItems", [rosterNav]);
       if (itemInStorage(SaveObjects.COMPANY)) {
         companyRoster.value = loadGameObject(SaveObjects.COMPANY);
         store.dispatch("setCompany", companyRoster.value);

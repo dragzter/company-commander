@@ -1,6 +1,6 @@
-import { names } from "./names.json";
-import { team_names } from "./team-names.json";
-import { locations } from "./location-names.json";
+import { names } from "../data/names.json";
+import { team_names } from "../data/team-names.json";
+import { locations } from "../data/location-names.json";
 
 export const getRandomSoldierName = () => {
   const randomIndex = Math.floor(Math.random() * names.length);
