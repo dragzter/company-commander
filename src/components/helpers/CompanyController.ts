@@ -1,6 +1,6 @@
 import { SaveObjects } from "../types/enums";
 import { Company, Soldier, CompanyStats, SoldierRank, SupportTeam } from "../types/unit-types";
-import { COMPANY_TEAMS } from "./constants";
+import { COMPANY_TEAMS } from "../types/constants";
 
 export class CompanyController {
   soldiers: Soldier[] = [];

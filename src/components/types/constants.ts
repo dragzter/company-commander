@@ -1,4 +1,4 @@
-import { NavMenuItem, Soldier } from "../types/unit-types";
+import { NavMenuItem, Soldier } from "./unit-types";
 
 // export const homeNav: NavMenuItem = {
 //   url: "Home",

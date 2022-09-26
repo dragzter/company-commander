@@ -11,10 +11,10 @@
   <Table :tableData="companyTableData ? companyTableData : {}" />
 </template>
 <script lang="ts">
+import { tableHeaders } from "../types/constants";
 import { computed, defineComponent, onMounted, ref, watch } from "vue";
 import { useStore } from "vuex";
 import { Company, SupportTeam, TableData, Soldier, SoldierDataCells } from "../types/unit-types";
-import { tableHeaders } from "../helpers/constants";
 import Table from "../gui/Table.vue";
 import router from "../../router";
 import { SaveObjects } from "../types/enums";

@@ -20,7 +20,7 @@ import NavItem from "./NavItem.vue";
 import { useStore } from "vuex";
 import { MemoryLoader } from "../helpers/CompanyController";
 
-import { missionsNav, rosterNav } from "../helpers/constants";
+import { missionsNav, rosterNav } from "../types/constants";
 import { Getters } from "../../store/getters";
 
 export default defineComponent({

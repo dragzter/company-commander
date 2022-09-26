@@ -51,7 +51,6 @@ import { createCompany } from "../helpers/create-company";
 import Select from "../gui/Select.vue";
 import { Company, NavMenuItem } from "../types/unit-types";
 import router from "../../router";
-import { gameSettingsNav, missionsNav, rosterNav } from "../helpers/constants";
 import { SaveObjects } from "../types/enums";
 import { MemoryInserter } from "../helpers/CompanyController";
 
