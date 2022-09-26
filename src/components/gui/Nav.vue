@@ -18,7 +18,8 @@
 import { computed, defineComponent, onMounted } from "vue";
 import NavItem from "./NavItem.vue";
 import { useStore } from "vuex";
-import { itemInStorage } from "../helpers/memory-management";
+import { MemoryLoader } from "../helpers/CompanyController";
+
 import { missionsNav, rosterNav } from "../helpers/constants";
 import { Getters } from "../../store/getters";
 
@@ -29,12 +30,10 @@ export default defineComponent({
   props: {},
   setup() {
     const store = useStore();
-    const navItemList = computed(() => {
-      return store.getters[Getters.GET_NAV_ITEMS];
-    });
-
+    const navItemList = computed(() => store.getters[Getters.GET_NAV_ITEMS]);
+    const MEM_LOADER = new MemoryLoader();
     const setNavItems = () => {
-      if (itemInStorage("COMPANY")) {
+      if (MEM_LOADER.itemInStorage("COMPANY")) {
         store.dispatch("setNavItems", [missionsNav, rosterNav]);
       }
     };

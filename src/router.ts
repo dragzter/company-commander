@@ -8,8 +8,12 @@ import Recruitment from "./components/pages/RecruitmentForum.vue";
 import GameMenu from "./components/pages/GameMenu.vue";
 import Dashboard from "./components/pages/Dashboard.vue";
 import CompanyDetailView from "./components/pages/CompanyDetailView.vue";
-import { itemInStorage } from "./components/helpers/memory-management";
 import { SaveObjects } from "./components/types/enums";
+import MissionScene from "./components/pages/MissionScene.vue";
+
+import { MemoryLoader } from "./components/helpers/CompanyController";
+
+const MEM_LOADER = new MemoryLoader();
 
 const routes = [
   {
@@ -37,7 +41,7 @@ const routes = [
     name: "GameSettings",
     component: GameSettings,
     beforeEnter: (to: any, from: any, next: any) => {
-      if (itemInStorage(SaveObjects.COMPANY)) {
+      if (MEM_LOADER.itemInStorage(SaveObjects.COMPANY)) {
         next({ name: "Roster" });
       } else {
         next();
@@ -63,6 +67,11 @@ const routes = [
     path: "/game-menu",
     name: "GameMenu",
     component: GameMenu,
+  },
+  {
+    path: "/mission-scene",
+    name: "MissionScene",
+    component: MissionScene,
   },
 ];
 const router = createRouter({

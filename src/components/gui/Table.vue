@@ -3,10 +3,7 @@
     <table v-if="tableData">
       <thead>
         <tr>
-          <template
-            v-for="(headerItem, i) in tableData.tableHeaders"
-            :key="`${headerItem}-${i}`"
-          >
+          <template v-for="(headerItem, i) in tableData.tableHeaders" :key="`${headerItem}-${i}`">
             <th>{{ headerItem }}</th>
           </template>
         </tr>
@@ -52,6 +49,7 @@ table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
+  border-radius: 4px;
   td,
   th {
     border: 1px solid #c0c0c0;

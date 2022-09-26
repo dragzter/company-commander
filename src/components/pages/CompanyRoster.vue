@@ -16,17 +16,10 @@ import { useStore } from "vuex";
 import { Company, SupportTeam, TableData, Soldier, SoldierDataCells } from "../types/unit-types";
 import { tableHeaders } from "../helpers/constants";
 import Table from "../gui/Table.vue";
-import { gameSettingsNav, rosterNav, companyTeams } from "../helpers/constants";
-import {
-  loadGameObject,
-  itemInStorage,
-  saveGameObject,
-  eraseGameObject,
-} from "../helpers/memory-management";
 import router from "../../router";
 import { SaveObjects } from "../types/enums";
 import { Getters } from "../../store/getters";
-import { consolidateSoldiers } from "../helpers/soldier-utility-functions";
+import { MemoryInserter, MemoryLoader, CompanyController } from "../helpers/CompanyController";
 
 export default defineComponent({
   components: {
@@ -37,6 +30,9 @@ export default defineComponent({
     const companyTableData = ref<TableData>();
     const companyRoster = ref<Company>();
     const allSoldiers = ref<Soldier[]>([]);
+    const MEM_INSERTER = new MemoryInserter();
+    const MEM_LOADER = new MemoryLoader();
+    const COMP_CONTROLLER = new CompanyController();
 
     const getCompanyRoster = (): Company => {
       return store.getters[Getters.GET_COMPANY_ROSTER];
@@ -52,8 +48,8 @@ export default defineComponent({
       );
 
       if (confirmation) {
-        eraseGameObject(SaveObjects.COMPANY);
-        eraseGameObject(SaveObjects.SOLDIERS);
+        MEM_LOADER.eraseGameObject(SaveObjects.COMPANY);
+        MEM_LOADER.eraseGameObject(SaveObjects.SOLDIERS);
         store.commit("ERASE_COMPANY", {});
         router.push({ name: "GameSettings" });
       }
@@ -68,9 +64,8 @@ export default defineComponent({
     /**
      * Compile Table Data
      */
-    const createTableData = (companyData: Company) => {
-      allSoldiers.value = consolidateSoldiers(companyData);
-      saveGameObject(SaveObjects.SOLDIERS, allSoldiers.value);
+    const createTableData = (company: Company) => {
+      allSoldiers.value = COMP_CONTROLLER.allSoldiers;
 
       companyTableData.value = {
         tableHeaders,
@@ -97,16 +92,16 @@ export default defineComponent({
      */
     watch(
       () => companyRoster.value,
-      (newVal) => {
-        if (newVal) {
-          createTableData(newVal);
+      (fullCompanyRoster) => {
+        if (fullCompanyRoster) {
+          createTableData(fullCompanyRoster);
         }
       }
     );
 
     onMounted(() => {
-      if (itemInStorage(SaveObjects.COMPANY)) {
-        companyRoster.value = loadGameObject(SaveObjects.COMPANY);
+      if (MEM_LOADER.itemInStorage(SaveObjects.COMPANY)) {
+        companyRoster.value = MEM_LOADER.loadGameObject(SaveObjects.COMPANY);
         store.dispatch("setCompany", companyRoster.value);
       } else {
         companyRoster.value = getCompanyRoster();

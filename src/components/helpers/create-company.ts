@@ -1,7 +1,7 @@
 import { Company } from "../types/unit-types";
-import { generateSoldierGroup } from "./generate-soldier";
+import { generateSoldierGroup } from "./generate-machine";
 import { SoldierJobs as Job, SupportTeamList } from "../types/enums";
-import { generateSupportTeam } from "./generate-support-team";
+import { generateSupportTeam } from "./generate-machine";
 
 export const createCompany = (companyName: string): Company => {
   return {

@@ -52,8 +52,8 @@ import Select from "../gui/Select.vue";
 import { Company, NavMenuItem } from "../types/unit-types";
 import router from "../../router";
 import { gameSettingsNav, missionsNav, rosterNav } from "../helpers/constants";
-import { saveGameObject } from "../helpers/memory-management";
 import { SaveObjects } from "../types/enums";
+import { MemoryInserter } from "../helpers/CompanyController";
 
 export default defineComponent({
   components: {
@@ -67,6 +67,7 @@ export default defineComponent({
     const isSaved = ref<boolean>(false);
     const company = ref<Company>();
     const store = useStore();
+    const M_MANAGER = new MemoryInserter();
 
     /**
      * Prop Configs
@@ -108,6 +109,7 @@ export default defineComponent({
     const handleSave = () => {
       isSaved.value = true;
       company.value = createCompany(companyName.value);
+      console.log(company.value);
       setGameDifficulty();
       setCompanyInState();
       router.push({ name: "Roster" });
@@ -121,7 +123,7 @@ export default defineComponent({
     };
 
     const setCompanyInState = () => {
-      saveGameObject(SaveObjects.COMPANY, company.value);
+      M_MANAGER.saveGameObject(SaveObjects.COMPANY, company.value as Company);
       store.dispatch("setCompany", company.value);
     };
 

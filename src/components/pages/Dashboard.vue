@@ -3,38 +3,37 @@
     <h1>Dashboard</h1>
     <div class="flex">
       <div class="stats flex flex-column">
-        <template v-for="commander in stats.commander" :key="commander.name">
+        <template v-if="stats?.commander?.rank">
           <div class="company-commander">
             <h3>
               Company Commander:<br />
-              {{ commander.name }} &#9733;
-              <span style="color: goldenrod">{{ commander.rank.value }}</span>
+              {{ stats.commander.name }} &#9733;
+              <span style="color: goldenrod">{{ stats.commander.rank.value }}</span>
             </h3>
           </div>
         </template>
-        <template v-for="team in stats.teams" :key="team.teamType">
-          <div class="support-team">
-            <h4>{{ team.teamType }}</h4>
-            <hr />
-            <p>
-              <strong>Leader</strong>: {{ team.leader.name }} -
-              {{ team.leader.rank.value }}
-            </p>
-            <p>
-              <strong>Asst</strong>: {{ team.assistant.name }} -
-              {{ team.assistant.rank.value }}
-            </p>
-            <h4>Crew:</h4>
-            <template
-              v-for="(crewMember, i) in team.crew"
-              :key="crewMember.name"
-            >
+        <template v-if="stats.teams">
+          <template v-for="team in stats.teams" :key="team.teamType">
+            <div v-if="team?.leader?.rank && team?.assistant?.rank" class="support-team">
+              <h4>{{ team.teamType }}</h4>
+              <hr />
               <p>
-                {{ i + 1 }}. {{ crewMember.name }} -
-                <em style="font-size: 12px">{{ crewMember.rank.value }}</em>
+                <strong>Leader</strong>: {{ team.leader.name }} -
+                {{ team.leader.rank.value }}
               </p>
-            </template>
-          </div>
+              <p>
+                <strong>Asst</strong>: {{ team.assistant.name }} -
+                {{ team.assistant.rank.value }}
+              </p>
+              <h4>Crew:</h4>
+              <template v-for="(crewMember, i) in team.crew" :key="crewMember.name">
+                <p v-if="crewMember?.rank">
+                  {{ i + 1 }}. {{ crewMember.name }} -
+                  <em style="font-size: 12px">{{ crewMember.rank.value }}</em>
+                </p>
+              </template>
+            </div>
+          </template>
         </template>
         <div class="soldier-count">Total Soldiers: {{ stats.count }}</div>
       </div>
@@ -43,14 +42,19 @@
   </div>
 </template>
 <script lang="ts">
-import { computed, defineComponent, PropType } from "vue";
-import { Company } from "../types/unit-types";
-import { getCompanyStats } from "../helpers/generate-stats";
+import { computed, defineComponent, onMounted } from "vue";
+import { CompanyController } from "../helpers/CompanyController";
 
 export default defineComponent({
   setup() {
+    const MEM_COMPANY_CTRL = new CompanyController();
     const stats = computed(() => {
-      return getCompanyStats();
+      console.log(MEM_COMPANY_CTRL.getCompanyInformation());
+      return MEM_COMPANY_CTRL.getCompanyInformation();
+    });
+
+    onMounted(() => {
+      console.log(stats.value);
     });
     return {
       stats,

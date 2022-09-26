@@ -1,7 +1,7 @@
 <template>
   <div class="soldier">
     <div class="tooltip">
-      <span class="tooltiptext" style="word-break: break-all">
+      <span v-if="soldier?.rank && soldier.job" class="tooltiptext" style="word-break: break-all">
         {{ soldier.name }}<br />
         Level: {{ soldier.level }} {{ soldier.job.replaceAll("_", " ") }}<br />
         {{ soldier.rank.value.replaceAll("_", " ") }}<br />
@@ -12,7 +12,7 @@
         Morale: {{ soldier.morale }}<br />
       </span>
       <span class="soldier-wrapper">
-        {{ soldier.icon }}
+        <span v-html="soldier.icon"></span>
         {{ soldier.name.split(" ")[0][0].toLowerCase() }}.{{
           soldier.name.split(" ")[1][0].toLowerCase()
         }}

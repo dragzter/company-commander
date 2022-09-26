@@ -17,13 +17,16 @@
 </template>
 <script lang="ts">
 import { computed, defineComponent } from "vue";
-import { itemInStorage } from "../helpers/memory-management";
+import { MemoryLoader } from "../helpers/CompanyController";
 import { SaveObjects } from "../types/enums";
 
 export default defineComponent({
   setup() {
+    const MEM_LOADER = new MemoryLoader();
     const linkText = computed(() => {
-      return itemInStorage(SaveObjects.COMPANY) ? "Continue to Campaign" : "Launch Campaign";
+      return MEM_LOADER.itemInStorage(SaveObjects.COMPANY)
+        ? "Continue to Campaign"
+        : "Launch Campaign";
     });
 
     return {

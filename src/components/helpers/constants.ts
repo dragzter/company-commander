@@ -50,7 +50,7 @@ export const tableHeaders = [
   "Experience",
 ];
 
-export const companyTeams = [
+export const COMPANY_TEAMS = [
   "commandTeam",
   "mgCrew",
   "mortarCrew",
@@ -60,7 +60,7 @@ export const companyTeams = [
   "sfTeam",
 ];
 
-export const blankSoldier: Soldier = {
+export const BLANK_SOLDIER: Soldier = {
   name: "Unknown",
   icon: "&#10067;", // https://emojiguide.org/question-mark
 };

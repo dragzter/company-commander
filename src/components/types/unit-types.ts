@@ -164,7 +164,7 @@ export interface SoldierDataCells {
   experience?: number;
 }
 
-export interface Stats {
+export interface CompanyStats {
   count: number;
   commander?: Soldier;
   teams?: SupportTeam[];

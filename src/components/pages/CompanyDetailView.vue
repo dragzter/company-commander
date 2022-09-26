@@ -1,24 +1,29 @@
 <template>
   <div class="company-view">
-    <template v-for="soldier in soldiers" :key="soldier.name">
-      <SoldierSingle :soldier="soldier" />
+    <h1>Roster</h1>
+    <template v-if="soldiers && soldiers.length">
+      <template v-for="soldier in soldiers" :key="soldier.name">
+        <SoldierSingle :soldier="soldier" />
+      </template>
     </template>
+    <p v-else>Roster is empty.</p>
   </div>
 </template>
 
 <script lang="ts">
 import { computed, defineComponent } from "vue";
-import { loadGameObject } from "../helpers/memory-management";
 import { SaveObjects } from "../types/enums";
 import SoldierSingle from "../gui/SoldierSingle.vue";
+import { MemoryLoader } from "../helpers/CompanyController";
 
 export default defineComponent({
   components: {
     SoldierSingle,
   },
   setup() {
+    const MEM_LOADER = new MemoryLoader();
     const soldiers = computed(() => {
-      return loadGameObject(SaveObjects.SOLDIERS);
+      return MEM_LOADER.loadGameObject(SaveObjects.SOLDIERS);
     });
     return {
       soldiers,

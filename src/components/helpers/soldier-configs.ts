@@ -1,13 +1,9 @@
-import {
-  SoldierJobs as Job,
-  Ranks,
-  SupportTeamList as Support,
-} from "../types/enums";
+import { SoldierJobs as Job, Ranks, SupportTeamList as Support } from "../types/enums";
 import {
   SoldierGeneratorConfig as SldrCnfg,
   SupportTeamGeneratorConfig as SprtTeamCnfg,
 } from "../types/unit-types";
-import { getRandomValueFromRange as r } from "./get-random-value";
+import { getRandomValueFromRange as r } from "./random-machine";
 
 export const SOLDIER_CONFIGS = {
   [Job.RIFLEMAN as string]: (): SldrCnfg => {
@@ -19,7 +15,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(55, 70, max),
       getJob: () => Job.RIFLEMAN,
       wounds: 1,
-      icon: "🪖",
+      icon: "<i class='fa-sharp fa-solid fa-person-military-rifle'></i>",
     };
   },
   [Job.RECON_RIFLEMAN as string]: (): SldrCnfg => {
@@ -31,7 +27,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(60, 70, max),
       getJob: () => Job.RECON_RIFLEMAN,
       wounds: 1,
-      icon: "🪖",
+      icon: "<i class='fa-duotone fa-person-military-rifle'></i>",
     };
   },
   [Job.MG_CREWMAN as string]: (): SldrCnfg => {
@@ -43,7 +39,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(55, 65, max),
       getJob: () => Job.MG_CREWMAN,
       wounds: 1,
-      icon: "🛡️",
+      icon: "<i class='fa-thin fa-person-military-rifle'></i>",
     };
   },
   [Job.MG_CREW_LOADER as string]: (): SldrCnfg => {
@@ -55,7 +51,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(50, 60, max),
       getJob: () => Job.MG_CREW_LOADER,
       wounds: 1,
-      icon: "🛡️",
+      icon: "<i class='fa-thin fa-person-military-rifle'></i>",
     };
   },
   [Job.MG_CREW_GUNNER as string]: (): SldrCnfg => {
@@ -67,7 +63,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(55, 70, max),
       getJob: () => Job.MG_CREW_GUNNER,
       wounds: 1,
-      icon: "🛡️",
+      icon: "<i class='fa-thin fa-person-military-rifle'></i>",
     };
   },
   [Job.MORTAR_TEAM_LEADER as string]: (): SldrCnfg => {
@@ -79,7 +75,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(55, 60, max),
       getJob: () => Job.MORTAR_TEAM_LEADER,
       wounds: 1,
-      icon: "🪖",
+      icon: "<i class='fa-thin fa-person-military-rifle'></i>",
     };
   },
   [Job.MORTAR_CREWMAN as string]: (): SldrCnfg => {
@@ -91,7 +87,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(55, 60, max),
       getJob: () => Job.MORTAR_CREWMAN,
       wounds: 1,
-      icon: "🪖",
+      icon: "<i class='fa-thin fa-person-military-rifle'></i>",
     };
   },
   [Job.SQUAD_LEADER as string]: (): SldrCnfg => {
@@ -103,7 +99,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(60, 70, max),
       getJob: () => Job.SQUAD_LEADER,
       wounds: 1,
-      icon: "🪖",
+      icon: "<i class='fa-thin fa-person-military-pointing'></i>",
     };
   },
   [Job.SQUAD_GUNNER as string]: (): SldrCnfg => {
@@ -115,7 +111,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(55, 70, max),
       getJob: () => Job.SQUAD_GUNNER,
       wounds: 1,
-      icon: "🪖",
+      icon: "<i class='fa-duotone fa-person-military-rifle'></i>",
     };
   },
   [Job.SNIPER as string]: (): SldrCnfg => {
@@ -127,7 +123,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(75, 80, max),
       getJob: () => Job.SNIPER,
       wounds: 2,
-      icon: "🪖",
+      icon: "<i class='fa-sharp fa-solid fa-person-rifle'></i>",
     };
   },
   [Job.MEDIC as string]: (): SldrCnfg => {
@@ -139,7 +135,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(45, 55, max),
       getJob: () => Job.MEDIC,
       wounds: 2,
-      icon: "🪖",
+      icon: "<i class='fa-solid fa-user-nurse'></i>",
     };
   },
   [Job.SURGEON as string]: (): SldrCnfg => {
@@ -151,7 +147,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(45, 55, max),
       getJob: () => Job.SURGEON,
       wounds: 2,
-      icon: "🪖",
+      icon: "<i class='fa-solid fa-user-nurse'></i>",
     };
   },
   [Job.PLATOON_COMMANDER as string]: (): SldrCnfg => {
@@ -163,7 +159,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(60, 70, max),
       getJob: () => Job.PLATOON_COMMANDER,
       wounds: 2,
-      icon: "🪖",
+      icon: "<i class='fa-duotone fa-person-military-pointing'></i>",
     };
   },
   [Job.COMPANY_COMMANDER as string]: (): SldrCnfg => {
@@ -175,7 +171,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(60, 70, max),
       getJob: () => Job.COMPANY_COMMANDER,
       wounds: 2,
-      icon: "⚔️",
+      icon: "<i class='fa-solid fa-person-military-pointing'></i>",
     };
   },
   [Job.FIRE_TEAM_GUNNER as string]: (): SldrCnfg => {
@@ -187,7 +183,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(60, 70, max),
       getJob: () => Job.FIRE_TEAM_GUNNER,
       wounds: 1,
-      icon: "🪖",
+      icon: "<i class='fa-duotone fa-person-military-rifle'></i>",
     };
   },
   [Job.FIRE_TEAM_RIFLEMAN as string]: (): SldrCnfg => {
@@ -199,7 +195,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(60, 70, max),
       getJob: () => Job.FIRE_TEAM_RIFLEMAN,
       wounds: 1,
-      icon: "🪖",
+      icon: "<i class='fa-duotone fa-person-military-rifle'></i>",
     };
   },
   [Job.FIRE_TEAM_LEADER as string]: (): SldrCnfg => {
@@ -211,7 +207,7 @@ export const SOLDIER_CONFIGS = {
       getHitChance: (max: number) => r(60, 75, max),
       getJob: () => Job.FIRE_TEAM_LEADER,
       wounds: 2,
-      icon: "🪖",
+      icon: "<i class='fa-duotone fa-person-military-pointing'></i>",
     };
   },
 };

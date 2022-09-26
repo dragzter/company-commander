@@ -2,59 +2,84 @@
   "missions": [
     {
       "name": "Rescue the Riflemen",
-      "desc": "It seems that 2nd platoon has gotten rather lost.  In an effort to scout out the Sacarrim Forrest, Lt. Barroveg led his men into the Marian Ravine.  As we all know, they cannot escape and must be rescued."
+      "desc": "It seems that 2nd platoon has gotten rather lost.  In an effort to scout out the Sacarrim Forrest, Lt. Barroveg led his men into the Marian Ravine.  As we all know, they cannot escape and must be rescued.",
+      "reward": 0
     },
     {
       "name": "A Profitable Proposition",
-      "desc": "Travel east of camp and find the merchants that have been stealing grain from the local farmers.  Bring them to justice and collect your award."
+      "desc": "Travel east of camp and find the merchants that have been stealing grain from the local farmers.  Bring them to justice and collect your award.",
+      "reward": 0
     },
     {
       "name": "Frontal Assault",
-      "desc": "Maj Gen Handol has assembled a small strike force and prepared for attack.  He needs a rearguard to protect his supply lines.  If this is to succeed, we will have to shore up the defenses and take on rearguard duties to protect the assault."
+      "desc": "Maj Gen Handol has assembled a small strike force and prepared for attack.  He needs a rearguard to protect his supply lines.  If this is to succeed, we will have to shore up the defenses and take on rearguard duties to protect the assault.",
+      "reward": 0
     },
     {
       "name": "Just A Scratch",
-      "desc": "The men of 4th Platoon are bored.  They have been in reserve for far too long.  There is in-fighting, gambling and all around terrible behavior and morale.  They need something to do, a foraging mission might just do the trick."
+      "desc": "The men of 4th Platoon are bored.  They have been in reserve for far too long.  There is in-fighting, gambling and all around terrible behavior and morale.  They need something to do, a foraging mission might just do the trick.",
+      "reward": 0
     },
     {
       "name": "The Sunset is Blinding",
-      "desc": "I really really hate the sun.  It's too bright and always in my eyes on my way home.  I wanted to move but the city council will not allow it.  Gordo Mayhews, that bastards that lives across the street is bullying everyone.  If it wasn't for him, I could have moved and wouldn't have to deal with this annoying sunset!  Go and take care of him, I will pay you well."
+      "desc": "I really really hate the sun.  It's too bright and always in my eyes on my way home.  I wanted to move but the city council will not allow it.  Gordo Mayhews, that bastards that lives across the street is bullying everyone.  If it wasn't for him, I could have moved and wouldn't have to deal with this annoying sunset!  Go and take care of him, I will pay you well.",
+      "reward": 0
     },
     {
       "name": "Aggressive Expansion",
-      "desc": "It seems that there is much more land for the taking.  More than the Council has led on.  I need a small force of troops to provide security while my Engineers explore and survey the area.  The pay is competitive and the cause is worthy!"
+      "desc": "It seems that there is much more land for the taking.  More than the Council has led on.  I need a small force of troops to provide security while my Engineers explore and survey the area.  The pay is competitive and the cause is worthy!",
+      "reward": 0
     },
     {
       "name": "Vicious Hounds",
-      "desc": "These hounds have been aggressive and terrifying.  Last week we had 2 seperate incidents where people were attacked!  In broad daylight even!  I cannot believe we have allowed this to happen.  Find these hounds and eliminate them once and for all."
+      "desc": "These hounds have been aggressive and terrifying.  Last week we had 2 seperate incidents where people were attacked!  In broad daylight even!  I cannot believe we have allowed this to happen.  Find these hounds and eliminate them once and for all.",
+      "reward": 0
     },
     {
       "name": "Unburden Yourself",
-      "desc": "It is said that an image is worth a thousand words.  But a thousand images might be worth... well, far more than that.  When I was a young man I used to love taking pictures of nature.  As I have grown older my collection has begun to be quite burdensome.  If you take my collection to the Westerhill market and sell them, I would be happy to give you... say, 10% of the sale price?"
+      "desc": "It is said that an image is worth a thousand words.  But a thousand images might be worth... well, far more than that.  When I was a young man I used to love taking pictures of nature.  As I have grown older my collection has begun to be quite burdensome.  If you take my collection to the Westerhill market and sell them, I would be happy to give you... say, 10% of the sale price?",
+      "reward": 0
     },
     {
       "name": "Monsters In the Vale",
-      "desc": "Monsters! Monsters everywhere! I need help reclaiming my farmland.  It is my right as a citizen of the vale.  I will pay you handsomly if you succeed!"
+      "desc": "Monsters! Monsters everywhere! I need help reclaiming my farmland.  It is my right as a citizen of the vale.  I will pay you handsomly if you succeed!",
+      "reward": 0
     },
     {
       "name": "The Grand Irrigation Project",
-      "desc": "It has come to my attention that the foreman assigned to the construction project has been skimming money from our funding!  Here I am, stuck in my office, powerless to stop him.  I need some bold men to confront him and get my money back!"
+      "desc": "It has come to my attention that the foreman assigned to the construction project has been skimming money from our funding!  Here I am, stuck in my office, powerless to stop him.  I need some bold men to confront him and get my money back!",
+      "reward": 0
     },
     {
       "name": "Untrustworthy",
-      "desc": "Some men believe in truth more than others.  Take my Cousin Luiz.  Hardly been in town for 3 days and he's already convinced all the shop keepers to increase their prices beyond what is reasonable!  How would I know that he would try to move in on my business.  Anyways... him and his men are holed up in the old Warehouse.  Find him and confront him."
+      "desc": "Some men believe in truth more than others.  Take my Cousin Luiz.  Hardly been in town for 3 days and he's already convinced all the shop keepers to increase their prices beyond what is reasonable!  How would I know that he would try to move in on my business.  Anyways... him and his men are holed up in the old Warehouse.  Find him and confront him.",
+      "reward": 0
     },
     {
       "name": "The Butchers Student",
-      "desc": "I taught him everything he knows!  How does he repay me?  He starts a competing business and threatens to destroy mine.  Not only that, but he's also gathered support form the locals.  You need to stop him!"
+      "desc": "I taught him everything he knows!  How does he repay me?  He starts a competing business and threatens to destroy mine.  Not only that, but he's also gathered support form the locals.  You need to stop him!",
+      "reward": 0
     },
     {
       "name": "A Flanking Maneuver",
-      "desc": "2nd Battalion has begun to move on the Tartus Mountains.  They have requested Infantry support and we are it.  Gather your men and prepare to join them."
+      "desc": "2nd Battalion has begun to move on the Tartus Mountains.  They have requested Infantry support and we are it.  Gather your men and prepare to join them.",
+      "reward": 0
     },
     {
       "name": "Firewatch",
       "desc": "We have received reports of enemy activity in and around Berg's Pass.  4th Company has already started creating the perimeter.  We need to secure the south and join them ASAP."
+    },
+    {
+      "name": "Disgrace",
+      "desc": "Some men from 19th Infantry have deserted! They just picked up their gear and went AWOL in the middle of the night.  Find them, and bring them to justice."
+    },
+    {
+      "name": "A Civilian Arsenal",
+      "desc": "A group of gisgruntled civilians from Epok Village have formed a militia and begun to attack local businesses in the region.  Mayor Vandth has charged us with finding these brigands and bringing them in."
+    },
+    {
+      "name": "Deliveries Are Late",
+      "desc": "The Salami manufacturer Kielbasa Bros are becoming quite annoying.  They got a monopoly in the area.  Not only are they jacking up prices, but they do their deliveries whenever they please!  Just last week I saw a Kielbasa Bros delivery crew beat up a shopkeeper because he refused to pay the delivery fees.  This has to stop! You can find his outpost near Sorrigan's Ravine, they spend a lot of time haning out there, gambling, prostituting and doing other foul things!"
     }
   ]
 }
